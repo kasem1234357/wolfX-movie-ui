@@ -34,7 +34,7 @@ function MoviesBox({boxStyle,data,type},props) {
       </div>}
          
        </div>
-       <div className='flex center' >{boxStyle === 'large-movie'?<Link to={`/${data.id}&${data.media_type||type?data.media_type||type:'movie'}`} className='watch text-white '>watch Now</Link>:null}
+       <div className='flex center' >{boxStyle === 'large-movie'?<Link to={`/MoviePage/${data.id}&${data.media_type||type?data.media_type||type:'movie'}`} className='watch text-white '>watch Now</Link>:null}
        {!checkData?null:<span  className={`add flex center ${!checkData?"":"checked"}`}>{!checkData?"+":<Success color="#fff" width="20px"/>}</span>}
        </div>
        
