@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import MoviesBox from '../components/sm-components/MoviesBox'
-
 function ScrollBox(props) {
  const [pressed, setPressed] = useState(false);
  const [stopPoint,setStopPoint]=useState(null)
@@ -22,7 +21,7 @@ function ScrollBox(props) {
       })
     }
   }
- 
+
   return (
     <div className='main-scroll' ref={ref}>
       <div className='flex scroll-box '
@@ -35,8 +34,7 @@ function ScrollBox(props) {
       setPressed(false)
     }}
    style={{...props.style,userSelect:'none',zIndex:10,minWidth:'100vh'}}>
-    
-   
+  
     {props.data.map(boxData=>{
            
            return(

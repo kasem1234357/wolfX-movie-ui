@@ -1,17 +1,17 @@
 
 import {  Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
-import Account from './pages/Account';
-import Notification from "./pages/Notification";
-import MoviePage from "./pages/MoviePage";
-import Explore from "./components/Explore";
+import Loading from "./components/Loading";
 import Main from "./components/Main";
-import Faviorate from "./pages/Faviorate";
 import {getStatus} from './utils/users'
 import { useDispatch, useSelector } from "react-redux";
 import { restore } from "./utils/movies";
-import { useEffect } from "react";
-
+import { lazy, Suspense, useEffect } from "react";
+const Account = lazy(()=> import('./pages/Account'))
+const Faviorate = lazy(()=> import('./pages/Faviorate'))
+const Notification = lazy(()=> import("./pages/Notification"))
+const MoviePage = lazy(()=> import("./pages/MoviePage"))
+const Explore = lazy(()=> import("./components/Explore"))
 function App() {
 
   const status = useSelector(getStatus)
@@ -22,8 +22,8 @@ function App() {
    },[status,user])
   return(
     <>
-     {/* { popUpOpen && (<PopUp type={typePopup}/>) } */}
-        <Routes>
+    <Suspense fallback={<Loading/>}>
+    <Routes>
         <Route path="/" element={<Home />} >
          <Route path="" element={<Main />}/>
          <Route path="/:typeId&:name" element={<MoviePage />}/>
@@ -33,6 +33,9 @@ function App() {
         </Route>
         <Route path='account' element={<Account/>}/>
         </Routes>
+    </Suspense>
+     {/* { popUpOpen && (<PopUp type={typePopup}/>) } */}
+       
       
     </>
    

@@ -1,13 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, {  useState } from 'react'
+import { lazy } from 'react';
 
 import Feed from '../components/Feed/Feed';
-// import PopUp from '../components/PopUp/PopUp';
-import RightBar from '../components/RightBar/RightBar';
-// import { contextData } from '../dataBase/context';
 import '../index.css';
+// import PopUp from '../components/PopUp/PopUp';
+
+const RightBar = lazy(()=>import('../components/RightBar/RightBar'))
+// import { contextData } from '../dataBase/context';
+
 function Home() {
   const[active,setActive]= useState(false);
-  
+
   return (
 
     <div className='root bg-dark'>

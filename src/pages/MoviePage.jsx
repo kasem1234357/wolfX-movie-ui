@@ -9,6 +9,7 @@ import Embeded from '../controlls/Embeded';
 import Similier from '../components/Similier';
 import Epsoides from '../components/Epsoides';
 import Actors from '../components/Actors';
+
 function MoviePage() {
   const [tab,setTab]= useState(1);
   const [loading,setLoading]=useState(true);
@@ -17,7 +18,7 @@ function MoviePage() {
   all:[],
 });
 const target =(target)=>{
-   window.open(`https://imdbembed.xyz/movie/imdb/${target}?server=1&ss=2`)
+   window.open(`https://autoembed.to/movie/imdb/${target}?server=1&ss=2`)
    }
 const contentLoad =(n)=>{
   

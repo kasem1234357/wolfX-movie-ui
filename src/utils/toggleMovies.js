@@ -6,7 +6,7 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
  const check = movies?.some(movie => movie.imdb_id === data.imdb_id)
  if(check){
    try {
-     axios.put(`http://localhost:8800/api/users/${user._id}/deleteMovie`,{...data.all,typeShow:name}).then(() =>{
+     axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/deleteMovie`,{...data.all,typeShow:name}).then(() =>{
        dispatch(deleteMovies({...data,typeShow:name}))
      })
    } catch (error) {
@@ -14,7 +14,7 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
    }
  }else{
    try {
-     axios.put(`http://localhost:8800/api/users/${user._id}/addMovie`,{data:{...data,typeShow:name}}).then((responce) =>{
+     axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/addMovie`,{data:{...data,typeShow:name}}).then((responce) =>{
        dispatch(addMovie({...data,typeShow:name}))
        setCheck(true)
      })

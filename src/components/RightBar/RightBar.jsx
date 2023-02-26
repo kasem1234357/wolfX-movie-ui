@@ -2,10 +2,9 @@ import React from 'react'
 import FilterBtn from '../../controlls/FilterBtn'
 // import { data } from '../../dataBase/fakeData';
 // import MoviesBox from '../sm-components/MoviesBox'
-
+import { memo } from 'react'
 import {Link, useNavigate, } from 'react-router-dom'
 import './rightbar.css'
-import success from '../../images/success-svgrepo-com.svg'
 import {useDispatch,useSelector}from 'react-redux'
 import {searchUpdate} from '../../utils/movies'
 import search from '../../images/search-svgrepo-com.svg'
@@ -13,14 +12,15 @@ import { Close } from '../../icons/svgIcon';
 import FilterBox from '../filterBox/FilterBox'
 import { useState } from 'react'
 import { filterApi } from '../filterBox/FilterApi'
-function RightBar({active,setActive}) {
+const RightBar = memo(({active,setActive}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeFilter,setActiveFilter]=useState(false)
+  const [filterID,setFilterID]=useState(null)
   const user = useSelector(state => state.users.user)
   return (
     <div className="flex rightBarContainer">
-      {activeFilter?<FilterBox setActiveFilter={setActiveFilter}/>:null}
+      {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}
       
        <div className={`flex-box bg-gray navigation flex  hidden scroll-y f-column ${active?'active':''}`} >
       
@@ -57,21 +57,32 @@ function RightBar({active,setActive}) {
        if(window.location.pathname === ('/explore/tv')){
         navigate("explore/tv",{ state: { dataType: 'search' } })
        }else{
-        navigate("explore/movie",{ state: { dataType: 'search' } })
+        navigate("explore/movie",{ state: { dataType: 'search'} })
        }
        if(e.target.value === ''){
-        navigate(window.location.pathname,{ state: { dataType: 'explore' } })
+        navigate(window.location.pathname,{ state: { dataType: 'explore',filter:filterID  } })
        }
        dispatch(searchUpdate(e.target.value) )
        ;}}/>
     </div>
     <div className="filter-items flex flex-between fw-row text-gray" style={{fontSize:'14px'}}>
-     <div className="flex-items box bg-main flex flex-between"><p>horror</p>
+     {/* <div className="flex-items box bg-main flex flex-between"><p>horror</p>
      <img className='svg-icon' src={success} alt="" />
-     </div>
+     </div> */}
      
-     {filterApi.type.map((type,index)=>(
-       <FilterBtn key={index} name={type}/>
+     {filterApi.type.slice(0,6).map(({id,name})=>(
+       <FilterBtn active={filterID ===id?"true":"false"} key={id} name={name} value={id} onClick={()=>{
+        const updatedId = filterID ===id?"":id
+        setFilterID((prev)=>prev === id?"":id)
+        dispatch(searchUpdate("") )
+        if(window.location.pathname === ('/explore/tv')){
+          navigate("explore/tv",{ state: { dataType: 'explore',filter:updatedId  } })
+          
+         }else{
+          navigate("explore/movie",{ state: { dataType: 'explore',filter:updatedId  } })
+         }
+         setActive(!active)
+       }}/>
      ))}
      <FilterBtn name='more items' style={{flex:'2',}} onClick={()=>setActiveFilter(true)}/>
      
@@ -83,6 +94,6 @@ function RightBar({active,setActive}) {
     </div>
    
   )
-}
+})
 
 export default RightBar

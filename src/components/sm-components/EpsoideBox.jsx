@@ -1,7 +1,6 @@
 
 import { Rating } from '../../icons/svgIcon'
 function MoviesBox({boxStyle,data,imageUrl,tvId,season}) {
-  console.log(data,tvId,season);
 
   const target =()=>{
     window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}`)

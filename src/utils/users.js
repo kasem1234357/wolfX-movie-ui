@@ -5,8 +5,8 @@ const initialState = {
  status:"idle",
  error : null //loading || success || failure 
 }
-const LOG_URL ="http://localhost:8800/api/auth/login"
-const GET_USER = "http://localhost:8800/api/users/"
+const LOG_URL ="https://wolfx-movie.onrender.com/api/auth/login"
+const GET_USER = "https://wolfx-movie.onrender.com/api/users/"
 export const logUser = createAsyncThunk('user/checkUser', async (initialUser) => {
  const response = await axios.post(LOG_URL, initialUser)
  return response.data

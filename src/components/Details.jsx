@@ -46,7 +46,7 @@ function Details({data3,target,name}) {
         <span className='text-gray item-space' >lang:</span><span>{data3.all.original_language}</span>
       </div>
       <div className="lang flex " style={{alignItems:"center"}}>
-        <span className='text-gray item-space'>companies:</span><span className='flex flex-between'>{data3.all.production_companies.map(company=>{
+        <span className='text-gray item-space'>companies:</span><span className='flex flex-between fw-row'>{data3.all.production_companies.map(company=>{
           return(
             <div className="companyBox flex flex-between padding" style={{gap:"10px",padding:"0.5rem 1rem"}}>
               <div className="imgBoxLogo" style={{boxShadow:"0px 0px 16px rgba(0,0,0,0.6)"}} >

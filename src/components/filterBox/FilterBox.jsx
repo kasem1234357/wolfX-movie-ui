@@ -3,17 +3,19 @@ import './filterBox.css'
 import {Close} from '../../icons/svgIcon'
 import { filterApi } from './FilterApi'
 import { useState } from 'react'
-function FilterBox({setActiveFilter}) {
+import { useNavigate } from 'react-router-dom'
+function FilterBox({setActiveFilter,setActive}) {
   const [filterOptions,SetFilterOptions] = useState({
     years:[],
     age:[],
     dataType:[]
   })
+  const navigate = useNavigate()
   return (
     <div className='filterBox bg-dark text-white '>
         <h2>Filter Box</h2>
         <span className='close'>
-          <Close width={'30px'} color={'red'} onClick={()=>setActiveFilter(false)}/> 
+          <Close width={'30px'} color={'#52b788'} onClick={()=>setActiveFilter(false)}/> 
         </span>
         <div className='flex f-column popUpBox-filter '>
             <div>
@@ -21,14 +23,17 @@ function FilterBox({setActiveFilter}) {
                     <h3>Type</h3>
                 </div>
                 <div className="filter-item-box flex flex-between fw-row">
-                    {filterApi.type.map((type,index)=>(
+                    {filterApi.type.map(({id,name},index)=>(
                       <div className={`popUp-filter  
-                           ${filterOptions.     dataType.indexOf(type) !== -1 ? 'active-popUp':'bg-white'} `
+                           ${filterOptions.dataType.some(data => data === id) ? 'active-popUp':'bg-white'} `
                            } 
                           key={index} 
-                          onClick={()=>{filterOptions.dataType.indexOf (type) === -1 && SetFilterOptions((prev)=>{
-                               return {...prev,dataType:[...prev.dataType,type]}})}
-                          } >{type}</div>))}
+                          onClick={()=>{
+                            filterOptions.dataType.some(data => data === id)?SetFilterOptions((prev)=>{
+                              return {...prev,dataType:prev.dataType.filter(data => data !== id)}}): SetFilterOptions((prev)=>{
+                               return {...prev,dataType:[...prev.dataType,id]}})
+                              }
+                          } >{name}</div>))}
                 </div>
             </div>
             <div >
@@ -85,7 +90,16 @@ function FilterBox({setActiveFilter}) {
         </div>
     </div>
       <div className='acceptedBox bg-dark'>
-       <button>done</button>
+       <button onClick={()=>{
+        setActiveFilter(false)
+        console.log(filterOptions);
+if(window.location.pathname === ('/explore/tv')){
+  navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType } })
+ }else{
+  navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType } })
+ }
+ setActive(false)
+       }}>done</button>
       </div>
       
     </div>

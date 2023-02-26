@@ -1,16 +1,19 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams,useLocation } from 'react-router-dom';
 import Loading from './Loading';
-import MoviesBox from './sm-components/MoviesBox';
 import {fetchUrl} from '../controlls/FetshingUrl'
 import { useMemo } from 'react';
 import { useCallback } from 'react';
+import { lazy } from 'react';
+const MoviesBox = lazy(()=> import("./sm-components/MoviesBox"))
 function Explore() {
   const location = useLocation()
   const dataType = location.state?location.state.dataType:'explore'
+  const filter = location.state?location.state.filter:''
+  const year = location.state?location.state.years:null
   let {name}=useParams()
  const [data,setData]=useState([]);
  const[page,setPage]=useState(1)
@@ -18,6 +21,7 @@ const [loading,setLoading]=useState(true);
 const [update,setUpdate]=useState(true)
 const containerRef=useRef(null)
 const query = useSelector(state => state.movies.querry)
+
 const callbackFunction=(entries)=>{
  const [entry] = entries
  if(entry.isIntersecting ){
@@ -34,7 +38,7 @@ const opt = useMemo(()=>({root:null,
 
 const fetchData =useCallback( (pageNumber,dataStore) => {
   try {
-       axios(fetchUrl[dataType](name,pageNumber,query)).then((responce)=>{
+       axios(fetchUrl[dataType](name,pageNumber,(query||year),filter)).then((responce)=>{
         setData([...dataStore,...responce.data.results]);
       setLoading(false)
       setUpdate(true)
@@ -45,7 +49,7 @@ const fetchData =useCallback( (pageNumber,dataStore) => {
     console.log(error);
   }
  
-},[dataType,name,query])
+},[dataType,name,query,filter])
 useEffect(()=>{
    setData([])
    setPage(1);
@@ -62,11 +66,12 @@ useEffect(()=>{
     if(refContent) observer.unobserve(refContent)
    }
 },[callbackFunction,opt]);
-if(loading){
-  return <Loading/>
-}
+// if(loading){
+//   return <Loading/>
+// }
   return (
-    <div className='flex  fw-row' style={{justifyContent:'space-around',alignItems:'center'}}>
+    <Suspense fallback={<Loading/>}>
+       <div className='flex  fw-row' style={{justifyContent:'space-around',alignItems:'center'}}>
      {data.map(boxData=>{
       return <MoviesBox boxStyle={'small-movie'} key={boxData.id} data={boxData} type={name}/>
      })}
@@ -75,6 +80,8 @@ if(loading){
      </div>
      
     </div>
+    </Suspense>
+   
   )
 }
 

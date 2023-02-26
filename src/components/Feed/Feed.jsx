@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Link, Outlet,  } from 'react-router-dom';
 import { Apps, BookMark, Home,Notifications } from '../../icons/svgIcon';
 import './feed.css'
-function Feed({active,setActive}) {
+const Feed =memo(({active,setActive}) => {
   // setactive function to open and close  rightbar
   return (
     <div className="flex-box-3 bg-dark grid feed hidden-x feed-box">
@@ -35,6 +35,6 @@ function Feed({active,setActive}) {
    <Outlet/>
   </div>
   )
-}
+})
 
 export default Feed

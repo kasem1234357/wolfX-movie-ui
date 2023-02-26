@@ -31,6 +31,7 @@ overflow: auto;
  position: absolute;
  right: 20px;
  top: 20px;
+ cursor: pointer;
 }
 .acceptedBox{
  position: fixed;
@@ -45,7 +46,7 @@ top: auto;
 }
 .acceptedBox button{
  border-radius: 20px;
- background: #005f73;
+ background: /*#005f73*/hsl(152, 41%, 52%,0.75);
  border: none;
  outline: none;
  padding: 5px 10px;

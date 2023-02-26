@@ -44,7 +44,7 @@ function Main() {
      <p className='text-gray flex center'>see All <Arrow/></p>
    </div>
    <ScrollBox style={{ minHeight: "270px",position:'relative'}} data={data3.series}type={'meduim-movie'} dataType={'tv'}/>
-<div className='flex flex-between '  style={{paddingTop:'10px',maxWidth:'98vw',overflowX:'auto'}}>
+<div className='flex flex-between '  style={{paddingTop:'10px',maxWidth:'98vw'}}>
      <h3 className='text-white'>Top rating</h3>
      <p className='text-gray flex center'>see All <Arrow/></p>
    </div>

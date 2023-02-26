@@ -4,9 +4,12 @@ import { useState } from 'react'
 import {  useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Rating, Success } from '../../icons/svgIcon'
+
 function MoviesBox({boxStyle,data,type},props) {
+  
   const [checkData,setCheck]=useState(false)
   const movies = useSelector(state =>state.movies.data)
+  
   useEffect(()=>{
     setCheck(movies?.some(mv => mv.id === data.id))
   },[movies,data])
@@ -37,7 +40,7 @@ function MoviesBox({boxStyle,data,type},props) {
        
      </div>
    </div>
-   <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path || data.poster_path}`} alt="" srcSet="" loading="lazy" />
+   <img fetchpriority="high" src={`https://image.tmdb.org/t/p/w342/${data.backdrop_path || data.poster_path}`} alt="" srcSet="" loading="lazy" />
  </div>
   )
 }
