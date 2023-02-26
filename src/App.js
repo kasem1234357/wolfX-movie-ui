@@ -26,7 +26,7 @@ function App() {
     <Routes>
         <Route path="/" element={<Home />} >
          <Route path="" element={<Main />}/>
-         <Route path="MoviePage" element={<MoviePage />}/>
+         <Route path="/MoviePage" element={<MoviePage />}/>
          <Route path="notification" element={<Notification/>}/>
          <Route path="explore/:name" element={<Explore />}/>
          <Route path='fav' element={<Faviorate />}/>
