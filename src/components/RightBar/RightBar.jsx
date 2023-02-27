@@ -60,7 +60,12 @@ const RightBar = memo(({active,setActive}) => {
         navigate("explore/movie",{ state: { dataType: 'search'} })
        }
        if(e.target.value === ''){
-        navigate(window.location.pathname,{ state: { dataType: 'explore',filter:filterID  } })
+        if(window.location.pathname === ('/explore/tv')){
+          navigate("explore/tv",{ state: { dataType: 'explore' } })
+          
+         }else{
+          navigate("explore/movie",{ state: { dataType: 'explore',filter:filterID  } })
+         }
        }
        dispatch(searchUpdate(e.target.value) )
        ;}}/>
