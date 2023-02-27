@@ -110,7 +110,7 @@ if(loading){
       
      )}
     </div>
-     <Similier typeId={typeId}/>
+     <Similier typeId={typeId} name={name}/>
    </>
   )
 }
