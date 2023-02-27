@@ -12,8 +12,8 @@ singleMovie:(name,movieId)=>{
 actorsInMovie:(name,movieId)=>{
   return( `${process.env.REACT_APP_URL}${name}/${movieId}/credits?api_key=${process.env.REACT_APP_KEY}&language=en-US&append_to_response=videos`)
 },
-similier:(movieId)=>{
- return(`${process.env.REACT_APP_URL}movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_KEY}&language=en-US$page=1`)
+similier:(Id,name)=>{
+ return(`${process.env.REACT_APP_URL}${name}/${Id}/recommendations?api_key=${process.env.REACT_APP_KEY}&language=en-US$page=1`)
 },
 trending:()=>{
   return(`${process.env.REACT_APP_URL}trending/all/week?api_key=${process.env.REACT_APP_KEY}`)
