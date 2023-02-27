@@ -59,12 +59,13 @@ useEffect(()=>{
 },[name,query,fetchData]);
 
 useEffect(()=>{
+  if(data !== []){
   const refContent= containerRef.current
   const observer = new IntersectionObserver(callbackFunction,opt)
    if(refContent) observer.observe(refContent)
    return ()=>{
     if(refContent) observer.unobserve(refContent)
-   }
+   }}
 },[callbackFunction,opt]);
 // if(loading){
 //   return <Loading/>
