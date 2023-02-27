@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react'
 import ScrollBox from '../controlls/ScrollBox'
 import Loading from './Loading';
 import {fetchUrl} from '../controlls/FetshingUrl'
-function Similier({typeId}) {
+function Similier({typeId,name}) {
  const [data,setData]=useState([]);
  const [loading,setLoading] = useState(true)
  const [error,setError] = useState(false)
  useEffect(()=>{
   try {
    setLoading(true);
-   axios(fetchUrl.similier(typeId) ).then((responce) => {
+   axios(fetchUrl.similier(typeId,name) ).then((responce) => {
    setData(responce.data.results)
    setLoading(false);
   })
