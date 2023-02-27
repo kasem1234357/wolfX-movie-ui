@@ -31,7 +31,7 @@ if(error){
   return (
    <>
    <div className='flex flex-between ' style={{paddingTop:'10px'}}>
-     <h3 className='text-white'>Similiar Movies</h3>
+     <h3 className='text-white'>Recommendations</h3>
      
    </div>
    
