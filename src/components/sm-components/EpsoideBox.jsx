@@ -3,7 +3,7 @@ import { Rating } from '../../icons/svgIcon'
 function MoviesBox({boxStyle,data,imageUrl,tvId,season}) {
 
   const target =()=>{
-    window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}`)
+    window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}?server=1&ss=2`)
     }
   return (
    <div   className={`flex-items bg-main movie-box ${boxStyle} `} 
