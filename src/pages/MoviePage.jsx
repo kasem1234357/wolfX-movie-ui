@@ -99,7 +99,7 @@ if(loading){
             
         { data3.all.seasons.slice(0,data3.all.seasons.length).filter(box =>box.name.includes("Season")).map((box,index)=>{
           return(
-            <option key={index} value={index+1} >{box.name}</option>
+            <option key={index} value={index} >{box.name}</option>
           )
         })}
        </select>
