@@ -251,7 +251,7 @@ textarea{
   background: hsl(var(--clr-dark));
 }
 .search{
-  border-radius: 25px;
+  border-radius: 7px;
   padding:.3rem 1rem;
 --gap:1rem ;
 }
