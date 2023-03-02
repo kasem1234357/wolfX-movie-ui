@@ -627,3 +627,6 @@ select::-ms-expand {
   background: linear-gradient(
 0deg, black, #914747c9)
 }
+.poster-img.flex-items img {
+    max-height: calc(100vh + 100px);
+}
