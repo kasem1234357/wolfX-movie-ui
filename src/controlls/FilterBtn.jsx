@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import horror from "../icons/horror.svg"
 import comedy from "../icons/comedy.png"
 import Animition from "../icons/Animtion.svg"
