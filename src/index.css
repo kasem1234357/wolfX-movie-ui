@@ -621,6 +621,7 @@ select::-ms-expand {
 }
 .filter-btn-box{
   gap: 0;
+  cursor:pointer;
 }
 .filter-btn-active{
   background: linear-gradient(
