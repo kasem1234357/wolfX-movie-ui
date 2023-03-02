@@ -97,7 +97,7 @@ if(loading){
        <div className='select'>
           <select onChange={(e)=>setSeason(parseInt(e.target.value) )}>
             
-        { data3.all.seasons.slice(0,data3.all.seasons.length).map((box,index)=>{
+        { data3.all.seasons.slice(0,data3.all.seasons.length).filter(box =>box.name.includes("Season")).map((box,index)=>{
           return(
             <option key={index} value={index} >{box.name}</option>
           )
