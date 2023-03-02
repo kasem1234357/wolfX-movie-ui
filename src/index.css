@@ -623,5 +623,6 @@ select::-ms-expand {
   gap: 0;
 }
 .filter-btn-active{
-  background: hsl(var(--clr-main)/.75);
+  background: linear-gradient(
+0deg, black, #914747c9)
 }
