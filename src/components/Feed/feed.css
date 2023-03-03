@@ -13,5 +13,10 @@
 .feed-box{
  max-height: 100vh;
  padding: 5px;
+ z-index: 1;
  position: relative;
+}
+span.logo-dt {
+  font-size: 16px;
+  color: #b2161d;
 }
