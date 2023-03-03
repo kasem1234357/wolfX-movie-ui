@@ -647,3 +647,6 @@ select::-ms-expand {
 .poster-img.flex-items img {
     max-height: calc(100vh + 100px);
 }
+.no-gap{
+  --gap:0;
+}
