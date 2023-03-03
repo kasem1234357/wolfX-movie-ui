@@ -588,6 +588,9 @@ select::-ms-expand {
    .flex-box.active{
     transform: translateX(0);
    }
+    .mobile-search{
+    display: flex;
+  }
    .toast{
      flex-direction: column;
    }
@@ -642,6 +645,9 @@ select::-ms-expand {
     transform: scale(0);
     width: 0;
 }
+    .mobile-search{
+    display: none;
+  }
 }
 .imgBoxLogo{
   width: 100px;
