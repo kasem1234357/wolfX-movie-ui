@@ -20,3 +20,47 @@ span.logo-dt {
   font-size: 16px;
   color: #b2161d;
 }
+.mobile-search {
+  border-radius: 50%;
+  /* padding: 0.3rem 1rem; */
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-left-color: red;
+  width: 30px;
+  border: 2px solid #353b41;
+  border-left-color: #b2161d;
+  border-right-color: #b2161d;
+  --gap: 1rem;
+  transition:  0.5s ;
+  transition-property: width;
+}
+.mobile-search .Search-input {
+  width: 100%;
+  visibility: hidden;
+  position: absolute;
+  height: 100%;
+  user-select: none;
+  /* padding: 10px; */
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: hsl(var(--clr-dark));
+  transition:  0.5s ;
+}
+.active-search{
+  width:100%;
+  border-radius: 25px;
+  transition:  0.5s ;
+  transition-property: width;
+}
+.active-search .Search-input{
+  visibility: visible;
+  position: relative;
+}
+.mobile-search img {
+  width: 20px;
+  height: 20px;
+}
