@@ -24,7 +24,7 @@ const RightBar = memo(({active,setActive}) => {
       
        <div className={`flex-box bg-gray navigation flex  hidden scroll-y f-column ${active?'active':''}`} >
       
-         <div className="account flex  padding flex-between " >
+         <div className="account flex  padding center " >
    
   <div className="account-detials flex center f-column">
  {user!==null? <><Link to='/account' ><span className="imgBox text-white">{user?.userName.substring(0,1)}</span><img className="none imgBox" src="" alt="" /></Link> 
