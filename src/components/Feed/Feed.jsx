@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
-
+import search from '../../images/search-svgrepo-com.svg'
 import { Link, Outlet,  } from 'react-router-dom';
 import { Apps, BookMark, Home,Notifications } from '../../icons/svgIcon';
+import { useState } from 'react';
 import './feed.css'
 const Feed =memo(({active,setActive}) => {
   const[activeSearch,setActiveSearch]=useState(false)
