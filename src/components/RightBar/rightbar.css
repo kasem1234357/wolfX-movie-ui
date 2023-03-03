@@ -5,6 +5,9 @@
   overflow-y: auto;
   z-index: 1000;
 }
+.account-detials{
+  --gap:0;
+}
 .account-detials h3{
  line-height: 2;
 }
@@ -16,35 +19,25 @@
 }
 .account{
  gap: 1rem;
+  position: relative;
+ padding-bottom:0px;
 }
 .filter-items{
  --gap:0.8rem
 }
 .sign-btn{
-  background: #b31c25;
+  background: /*#b31c25*/#22262a ;
+  cursor: pointer;
     border: none;
-    border-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
     display: flex;
     align-items: center;
     color: hsl(var(--clr-white));
     padding: 10px 15px 10px 15px;
     font-size: 16px;
 }
-.sign-btn span,.login-btn span{
+.sign-btn span{
   padding-left: 5px;
-  color: #fff;
-}
-.login-btn span{
-  color: #c9ccd4;
-}
-.login-btn{
-  width: max-content;
-    background: #22262a;
-    border-radius: 25px;
-    margin-left: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px 10px 15px;
-    font-size: 16px;
+  color: #edf1f5;
 }
