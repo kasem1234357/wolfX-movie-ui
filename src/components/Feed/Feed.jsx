@@ -11,9 +11,7 @@ const Feed =memo(({active,setActive}) => {
 {/*============= url to the the mian pages==============================*/ }
              <div>
                  <ul className="flex primary-navigation ">
-                  <Link to='' className="text-white "><Home width={'20px'}/></Link>
-                 <Link to='/explore/movie' state={{ dataType: 'explore' }} className="text-gray">movies</Link>
-                 <Link to='/explore/tv' state={{ dataType: 'explore' }}     className="text-gray">tv show</Link>
+                   <Link to='' className="text-white "><span className='logo-tm'> 12</span>:00<span className='logo-dt'>pm</span></Link>
                  </ul>
              </div>
 {/*============= url to the the another pages============================*/ }
