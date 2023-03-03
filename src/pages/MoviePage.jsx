@@ -64,7 +64,9 @@ if(loading){
 }
   return (
     <>
-    <div className='flex fill fw-row' >
+    <div className='flex fill fw-row' style={{position:"relative"}}>
+    <div className="blur-back" style={{background:`url(https://image.tmdb.org/t/p/original${data3?.all?.backdrop_path})`}}></div>
+      <div className="opacity-front"></div>
      <div className='poster-img flex-items'>
       <img alt="" srcSet={`https://image.tmdb.org/t/p/original${data3?.all?.poster_path}`} loading="lazy"  />
      </div>
