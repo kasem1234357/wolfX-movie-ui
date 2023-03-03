@@ -1,6 +1,15 @@
 /* =================== */
 /* Custom property    */
 /* ================= */
+@font-face {
+  font-family: "Light";   /*Can be any text*/
+  src: local("AirbnbCerealLight"),
+    url("./fonts/ethnocentricRg.otf") format("opentype"),
+    url("./fonts/ethnocentricRgit.otf") format("opentype")
+   
+}
+
+
 :root{
   --clr-dark:210 11% 15%;
   --clr-gray:210 10% 23%;
@@ -203,12 +212,20 @@ textarea{
   --gap: clamp(1rem, 3vw, 2rem);
   --underline-gap: 2rem;
   list-style: none;
+   font-family: "light";
   padding: 0;
   margin: 0;
+}
+.primary-navigation a {
+  font-size: 25px;
 }
 .svg-icon,.svg-icon img{
   width: 15px;
   aspect-ratio: 1;
+}
+li#nav-block {
+  display: grid;
+  place-items: center;
 }
 .feed-nav{
   padding: 1.5rem 2rem ;
@@ -469,6 +486,7 @@ background: linear-gradient(0deg, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firef
 .poster-img{
   min-width: 320px;
   padding: 10px;
+  z-index: 2;
 }
 .item-space{
   padding-right: var(--right-padding,50px);
@@ -649,4 +667,25 @@ select::-ms-expand {
 }
 .no-gap{
   --gap:0;
+}
+.blur-back {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: cover;
+  /* backdrop-filter: blur(163px); */
+  filter: blur(28px);
+}
+.opacity-front {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: rgb(0 0 0 / 45%);
+  height: 100%;
+  filter: blur(7px);
+}
+.details-movie{
+  z-index: 2;
 }
