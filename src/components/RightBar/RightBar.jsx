@@ -18,6 +18,7 @@ const RightBar = memo(({active,setActive}) => {
   const [activeFilter,setActiveFilter]=useState(false)
   const [filterID,setFilterID]=useState(null)
   const user = useSelector(state => state.users.user)
+  const url = window.location.pathname.slice(window.location.pathname.lastIndexOf("/")+1)
   return (
     <div className="flex rightBarContainer">
       {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}
@@ -46,6 +47,11 @@ const RightBar = memo(({active,setActive}) => {
  
  <div className="arrow " style={{cursor: 'pointer'}}><Close width={'40px'} onClick={()=>setActive(!active)}/></div></div>
    <div className="filter flex-items padding flow ">
+    <div className="pages-box flex flex-between fw-row">
+      <div className={`flex-items ${url ==="movie"&&"active-page"}`}><Link to='/explore/movie'>Movies</Link></div>
+      <div className={`flex-items ${url ==="tv"&&"active-page"}`}> <Link to='/explore/tv'>Shows</Link></div>
+      <div className={`flex-items ${url ==="actors"&&"active-page"}`}>Actors</div>
+    </div>
     <div className="search bg-dark flex center text-gray">
      <img className="" src={search}alt=""  />
      <input className='Search-input' type="search" name="" id="" onInput={(e)=>{
