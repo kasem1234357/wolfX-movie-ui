@@ -232,9 +232,23 @@ textarea{
   overflow: hidden;
 }
 .arrow{
-  transform: rotate(-90deg);
-  width: 15px;
   height: 15px;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  width: 41px;
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  padding: 10px;
+  transition: 0.5s;
+}
+.arrow svg {
+  background: #72787e;
+  /* border-radius: 15%; */
+  /* border-bottom-right-radius: 50%; */
+  border-top-left-radius: 60%;
+  /* margin: -5px; */
+  padding: 5px;
 }
 .padding{
   padding: 0.5rem 1rem 1rem
@@ -605,7 +619,10 @@ select::-ms-expand {
     min-width: 0px;
     flex: 0;
    }
- 
+    .flex-box.active .arrow {
+    transform: scale(0);
+    width: 0;
+}
 }
 .imgBoxLogo{
   width: 100px;
