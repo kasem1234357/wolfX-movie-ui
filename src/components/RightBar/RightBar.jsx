@@ -22,7 +22,7 @@ const RightBar = memo(({active,setActive}) => {
     <div className="flex rightBarContainer">
       {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}
       
-       <div className={`flex-box bg-gray navigation flex  hidden scroll-y f-column ${active?'active':''}`} >
+       <div className={`flex-box bg-gray navigation flex  hidden scroll-y f-column ${active?'active':''} ${user!==null&&"no-gap"}`} >
       
          <div className="account flex  padding center " >
    
