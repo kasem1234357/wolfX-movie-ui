@@ -38,7 +38,7 @@ const opt = useMemo(()=>({root:null,
 
 const fetchData =useCallback( (pageNumber,dataStore) => {
   try {
-       axios(fetchUrl[dataType](name,pageNumber,(query||year),filter)).then((responce)=>{
+       axios(fetchUrl[dataType](name,pageNumber,query,year,filter)).then((responce)=>{
         setData([...dataStore,...responce.data.results]);
       setLoading(false)
       setUpdate(true)

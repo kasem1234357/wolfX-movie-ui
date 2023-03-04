@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react'
-import {Link } from 'react-router-dom'
 import { useEffect } from 'react';
 import { useState } from 'react';
+import {Link } from 'react-router-dom'
 import ScrollBox from '../controlls/ScrollBox';
 import { Arrow } from '../icons/svgIcon';
 import Loading from './Loading';
@@ -15,7 +15,7 @@ function Main() {
   });
   const fetchData = async () => {
     try {
-     const result = await axios(fetchUrl.explore("movie",1),);
+      const result = await axios(fetchUrl.explore("movie",1),);
       const rated = await axios(fetchUrl.rated());
       const series= await axios(fetchUrl.tvShow())
       setData({rated:rated.data.results,all:result.data.results,series:series.data.results});
@@ -34,7 +34,7 @@ function Main() {
     return <Loading/>
   }
   return (
-    <div className=" feed-list grid scroll-y padding hidden-x"  >
+   <div className=" feed-list grid scroll-y padding hidden-x"  >
    <div className='flex flex-between ' style={{paddingTop:'10px',maxWidth:'98vw'}}>
      <h3 className='text-white'>Trending Movies</h3>
      <p className='text-gray flex center' ><Link to="/explore/movie">see All</Link><Arrow/></p>

@@ -1,7 +1,6 @@
-import axios from 'axios'
 const addYears = (start)=>{
    const years = [];
-   for(let i =start;i<2022;i++){
+   for(let i =2023;i>=start;i--){
     years.push(i)
    }
    return years
@@ -90,6 +89,32 @@ export const filterApi = {
    }
    ],
  age:['مراقبة الأهل','+13','+16','+18','للكبار فقط'],
+ country:[
+ {
+   id:1,
+   name:"عربي"
+ },
+ {
+   id:2,
+   name:"امريكي"
+ },
+ {
+   id:3,
+   name:"هندي"
+ },
+ {
+   id:4,
+   name:"اسباني"
+ },
+ {
+   id:5,
+   name:"كوري"
+ },
+ {
+   id:6,
+   name:"مصري"
+ }
+],
  section:[]
 }
 

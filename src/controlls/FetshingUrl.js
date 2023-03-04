@@ -2,7 +2,7 @@ export const fetchUrl ={
  search:(name,page,query)=>{
  return (`${process.env.REACT_APP_URL}search/${name}?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`)
 },
-explore:(name,page,year=null,genresId=null)=>{
+explore:(name,page,query,year=null,genresId=null)=>{
   return (
 `${process.env.REACT_APP_URL}${name}/popular?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}${year?"&primary_release_year="+year:""}&with_genres=${genresId}`)
 },
@@ -30,7 +30,8 @@ singleSeason:(tvId,seasonNumber)=>{
 singleEpisode:(tvId,seasonNumber,episodeNumber)=>{ 
   return(`${process.env.REACT_APP_URL}tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}/external_ids?api_key=${process.env.REACT_APP_KEY}`)
 },
-filtershowsByType:(typeShow,page,year=null,typeId)=>{
-  return(`${process.env.REACT_APP_URL}/discover/${typeShow}?api_key=${process.env.REACT_APP_KEY}&page=${page}&with_genres=${typeId.join("|")}${year?"&primary_release_year="+year.join("|"):""}&sort_by=vote_average.desc`)
+filtershowsByType:(typeShow,page,query,year=null,typeId)=>{
+  console.log(year);
+  return(`${process.env.REACT_APP_URL}${typeShow}/popular?api_key=${process.env.REACT_APP_KEY}&page=${page}&${typeShow !== 'tv'?"with_genres="+typeId.join("|"):""}${year?"&primary_release_year="+year.join("|"):""}&sort_by=vote_average.desc`)
 }
 }
