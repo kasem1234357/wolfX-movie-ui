@@ -44,7 +44,7 @@
 .pages-box.flex.flex-between.fw-row {
   --gap: 10px;
 }
-.pages-box > div {
+.pages-box .page-router {
   padding: 10px;
   background: #22262a;
   text-align: center;
