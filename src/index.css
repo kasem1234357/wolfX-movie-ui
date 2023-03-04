@@ -592,7 +592,7 @@ select::-ms-expand {
 .mobile-search{
   display: flex;
 }
-  .large-movie {
+  .large-movie,.meduim-movie {
     min-width: 268px;
 }
    .flex-box.active{
