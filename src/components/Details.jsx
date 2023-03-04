@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Download, Success } from '../icons/svgIcon'
 import {useDispatch,useSelector}from 'react-redux'
 import { ToggleMovies } from '../utils/toggleMovies';
+import { useNavigate } from 'react-router-dom'
 function Details({data3,target,name}) {
   const [checkData,setCheck]=useState(false)
   const user = useSelector(state => state.users.user)
   const movies = useSelector(state =>state.movies.data)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   // const ToggleMovies = ()=>{
   //   const check = movies?.some(movie => movie.imdb_id === data3.all.imdb_id)
   //   if(check){
@@ -72,7 +74,7 @@ function Details({data3,target,name}) {
           name,
           movies
     }) 
-        :console.warn("you are not logged")}} className={`add flex center ${!checkData?"":"checked"}`}>{!checkData?"+":<Success color="#fff" width="20px"/>}</span> 
+        :navigate("/account")}} className={`add flex center ${!checkData?"":"checked"}`}>{!checkData?"+":<Success color="#fff" width="20px"/>}</span> 
       </div>
     </div>
   )
