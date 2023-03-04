@@ -90,7 +90,7 @@ const RightBar = memo(({active,setActive}) => {
          setActive(!active)
        }}/>
      ))}
-     <FilterBtn name='more items' style={{flex:'2',}} onClick={()=>setActiveFilter(true)}/>
+     <FilterBtn name='more-items' style={{flex:'2',}} onClick={()=>setActiveFilter(true)}/>
      
     </div>
     
