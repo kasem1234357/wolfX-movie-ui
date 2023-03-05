@@ -16,7 +16,7 @@ const Download = () => {
      <h1>url 2</h1>
      <a href={`http://dl6.sermovie.xyz/${type}/${ parseInt(year)+1}/${name+(type === "Movie"?parseInt(year)+1:"")}/`} target="_blank" rel="noopener noreferrer"> url 2</a>
      <h1>url 3</h1>
-     <a href={`http://dl6.sermovie.xyz/${type}/${ parseInt(year)-1}/${name+(type === "Movie"?parseInt(year)-1:"")}/`} target="_blank" rel="noopener noreferrer"> url 3</a>
+     <a href={`http://s1.dlcm.xyz/Zone/${type}/${year}/`} target="_blank" rel="noopener noreferrer"> url 3</a>
     </div>
     
     </>
