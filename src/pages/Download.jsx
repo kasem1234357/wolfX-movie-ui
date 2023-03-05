@@ -1,7 +1,6 @@
 
-import React, { useRef } from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import React from 'react'
+
 import { useLocation } from 'react-router-dom'
 
 const Download = () => {
@@ -12,8 +11,12 @@ const Download = () => {
   return (
    <>
     <div>
-     <iframe width={'100%'} height="100%" title='jjj'  src={`http://dl6.sermovie.xyz/${type}/${year}/${name}/`} frameborder="0"></iframe>
-     
+     <h1>url 1</h1>
+     <a href={`http://dl6.sermovie.xyz/${type}/${year}/${name+year}/`} target="_blank" rel="noopener noreferrer"> url 1</a>
+     <h1>url 2</h1>
+     <a href={`http://dl6.sermovie.xyz/${type}/${ parseInt(year)+1}/${name+(parseInt(year)+1)}/`} target="_blank" rel="noopener noreferrer"> url 2</a>
+     <h1>url 3</h1>
+     <a href={`http://dl6.sermovie.xyz/${type}/${ parseInt(year)-1}/${name+(parseInt(year)-1)}/`} target="_blank" rel="noopener noreferrer"> url 3</a>
     </div>
     
     </>
