@@ -12,6 +12,7 @@ const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
 const MoviePage = lazy(()=> import("./pages/MoviePage"))
 const Explore = lazy(()=> import("./components/Explore"))
+const Download  = lazy(()=> import("./pages/Download"))
 function App() {
 
   const status = useSelector(getStatus)
@@ -30,6 +31,7 @@ function App() {
          <Route path="notification" element={<Notification/>}/>
          <Route path="explore/:name" element={<Explore />}/>
          <Route path='fav' element={<Faviorate />}/>
+         <Route path='download' element={<Download />}/>
         </Route>
         <Route path='account' element={<Account/>}/>
         </Routes>
