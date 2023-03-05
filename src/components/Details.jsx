@@ -11,7 +11,7 @@ function Details({data3,target,name}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const year = name ==="movie"?data3?.all.release_date.split("-")[0]:data3?.all.first_air_date.split("-")[0]
-  const nameDW =name ==="movie"?data3?.all.original_title.split(" ").join(".")+".":data3?.all.original_name.split(" ").join(".")+"."
+  const nameDW =name ==="movie"?data3?.all.original_title.split(" ").join(".")+".":data3?.all.original_name.split(" ").join(".")+
   const type =name ==="movie"?"Movie":"Series"
   // const ToggleMovies = ()=>{
   //   const check = movies?.some(movie => movie.imdb_id === data3.all.imdb_id)
