@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation} from 'react-router-dom';
+import { useSearchParams} from 'react-router-dom';
 import Loading from '../components/Loading';
 import {  Rating } from '../icons/svgIcon';
 import {fetchUrl} from '../controlls/FetshingUrl'
@@ -11,13 +11,15 @@ import Epsoides from '../components/Epsoides';
 import Actors from '../components/Actors';
 
 function MoviePage() {
-  const location = useLocation();
   const [tab,setTab]= useState(1);
   const [loading,setLoading]=useState(true);
   const [season,setSeason]=useState(1)
  const [data3,setData]=useState({
   all:[],
 });
+  const [searchParams] = useSearchParams();
+const idMovie = searchParams.get("id")
+const nameData = searchParams.get("name")
 const target =(target)=>{
    window.open(`https://autoembed.to/movie/imdb/${target}?server=1&ss=2`)
    }
@@ -40,8 +42,9 @@ const contentLoad =(n)=>{
 
   }
 }
-const typeId = location?.state.typeId
-const name = location?.state.name
+const typeId = idMovie
+const name =  nameData
+
 
 
  useEffect(()=>{
