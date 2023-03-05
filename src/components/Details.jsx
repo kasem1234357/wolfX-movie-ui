@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Download, Success } from '../icons/svgIcon'
 import {useDispatch,useSelector}from 'react-redux'
 import { ToggleMovies } from '../utils/toggleMovies';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 function Details({data3,target,name}) {
   const [checkData,setCheck]=useState(false)
@@ -9,6 +10,9 @@ function Details({data3,target,name}) {
   const movies = useSelector(state =>state.movies.data)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const year = name ==="movie"?data3?.all.release_date.split("-")[0]:data3?.all.first_air_date.split("-")[0]
+  const nameDW =name ==="movie"?data3?.all.original_title.split(" ").join(".")+"."+year:data3?.all.original_name.split(" ").join(".")
+  const type =name ==="movie"?"Movie":"Series"
   // const ToggleMovies = ()=>{
   //   const check = movies?.some(movie => movie.imdb_id === data3.all.imdb_id)
   //   if(check){
@@ -62,7 +66,9 @@ function Details({data3,target,name}) {
     </div>
     <div className='flex ' style={{alignItems:'center'}} >
       {name === 'tv'?null: <span className='watch ' onClick={()=>target(data3.all.imdb_id)} >watch Now</span>}
-     <span className='add flex center' style={{marginRight:'7px'}}><Download width={'15px'}/></span>
+     <span className='add flex center' style={{marginRight:'7px'}}><Link to="/download" state={{type:type,year:year,name:nameDW
+}}>
+     <Download width={'15px'}/></Link></span>
       <span 
       onClick={()=>{
         user ?
