@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Download, Success } from '../icons/svgIcon'
+import { Download, Success,Warning } from '../icons/svgIcon'
 import {useDispatch,useSelector}from 'react-redux'
 import { ToggleMovies } from '../utils/toggleMovies';
 import { Link } from 'react-router-dom';
@@ -81,6 +81,8 @@ function Details({data3,target,name}) {
           movies
     }) 
         :navigate("/account")}} className={`add flex center ${!checkData?"":"checked"}`}>{!checkData?"+":<Success color="#fff" width="20px"/>}</span> 
+         <span className='add flex center' style={{margin:'7px'}}  >
+     <Warning width={'15px'}/></span>
       </div>
     </div>
   )
