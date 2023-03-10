@@ -81,8 +81,8 @@ const RightBar = memo(({active,setActive}) => {
         const updatedId = filterID ===id?"":id
         setFilterID((prev)=>prev === id?"":id)
         dispatch(searchUpdate("") )
-        if(window.location.pathname === ('/explore/tv')){
-          navigate("explore/tv",{ state: { dataType: 'explore' } })
+       if(window.location.pathname === ('/explore/tv')){
+          navigate("explore/tv",{ state: { dataType: 'filtershowsByType',filter:updatedId  } })
           
          }else{
           navigate("explore/movie",{ state: { dataType: 'explore',filter:updatedId  } })
