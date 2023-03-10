@@ -13,7 +13,8 @@ function Explore() {
   const location = useLocation()
   const dataType = location.state?location.state.dataType:'explore'
   const filter = location.state?location.state.filter:''
-  const year = location.state?location.state.years:null
+  const origin = location.state?location.state.origin:''
+  const year = location.state?location.state.years:[]
   let {name}=useParams()
  const [data,setData]=useState([]);
  const[page,setPage]=useState(1)
@@ -38,7 +39,7 @@ const opt = useMemo(()=>({root:null,
 
 const fetchData =useCallback( (pageNumber,dataStore) => {
   try {
-       axios(fetchUrl[dataType](name,pageNumber,query,year,filter)).then((responce)=>{
+       axios(fetchUrl[dataType](name,pageNumber,query,year,filter,origin)).then((responce)=>{
         setData([...dataStore,...responce.data.results]);
       setLoading(false)
       setUpdate(true)
