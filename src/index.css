@@ -708,3 +708,19 @@ select::-ms-expand {
 .details-movie{
   z-index: 2;
 }
+.direct-section {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  background: #353b41;
+  color: #fff;
+}
+a.direct-link {
+  padding: 10px 15px;
+  background: #72787e;
+  border-radius: 7px;
+}
+.q {
+  flex: 1;
+  text-align: center;
+}
