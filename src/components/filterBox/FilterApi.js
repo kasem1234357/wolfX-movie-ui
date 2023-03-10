@@ -91,27 +91,27 @@ export const filterApi = {
  age:['مراقبة الأهل','+13','+16','+18','للكبار فقط'],
  country:[
  {
-   id:1,
-   name:"عربي"
+   id:"SY",
+   name:"سوري"
  },
  {
-   id:2,
+   id:"US",
    name:"امريكي"
  },
  {
-   id:3,
+   id:"IN",
    name:"هندي"
  },
  {
-   id:4,
+   id:"ES",
    name:"اسباني"
  },
  {
-   id:5,
+   id:"KO",
    name:"كوري"
  },
  {
-   id:6,
+   id:"EG",
    name:"مصري"
  }
 ],
