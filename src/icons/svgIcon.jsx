@@ -55,13 +55,18 @@ export const Success = memo((props)=>{
   const {color,...otherProps}=props
   return <svg {...otherProps} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill={color?color:'#fff'}><path d="M22.5 4.5c-.8-.8-2.2-.8-3 0L9 15l-4.5-4.5c-.8-.8-2.2-.8-3 0s-.8 2.2 0 3L9 21 22.5 7.5c.8-.8.8-2.2 0-3z"></path></g></svg>
 })
-export const Warning = memo((props)=>{
-  const {color,...otherProps}=props
-  return <svg {...otherProps} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill='#cedd45'><path fill='#22262a' d="M12 0L0 23h24L12 0zm0 21c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2s2 .9 2 2v6c0 1.1-.9 2-2 2z"></path></g></svg>
+// export const Warning = memo((props)=>{
+//   const {color,...otherProps}=props
+//   return <svg {...otherProps} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill='#cedd45'><path fill='#22262a' d="M12 0L0 23h24L12 0zm0 21c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2s2 .9 2 2v6c0 1.1-.9 2-2 2z"></path></g></svg>
   
-})
+// })
 export const Filter = memo((props)=>{
   const {color,...otherProps}=props
   return <svg {...otherProps} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill={color?color:'#fff'}><path d="M19.6 5H4.4c-.9 0-1.3 1.1-.7 1.7L10 13v6c0 .8.9 1.3 1.6.8l2-1.5c.3-.2.4-.5.4-.8V13l6.3-6.3c.6-.6.2-1.7-.7-1.7z"></path></g></svg>
+  
+})
+export const Warning = memo((props)=>{
+  const {color,...otherProps}=props
+  return <svg {...otherProps} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill={color?color:'#fff'}><path d="M12 0L0 23h24L12 0zm0 21c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2s2 .9 2 2v6c0 1.1-.9 2-2 2z"></path></g></svg>
   
 })
