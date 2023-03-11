@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 function Details({data3,target,name}) {
   const [checkData,setCheck]=useState(false)
+   const nvigate = useNavigate()
   const user = useSelector(state => state.users.user)
   const movies = useSelector(state =>state.movies.data)
   const dispatch = useDispatch()
@@ -65,7 +66,11 @@ function Details({data3,target,name}) {
       </div>
     </div>
     <div className='flex ' style={{alignItems:'center'}} >
-      {name === 'tv'?null: <span className='watch ' onClick={()=>target(data3.all.imdb_id)} >watch Now</span>}
+      {name === 'tv'?null: <span className='watch ' onClick={()=>{
+           nvigate(`/watch?id=${data3.all.imdb_id}&server=3`)
+        // target(data3.all.imdb_id)
+        
+        }} >watch Now</span>}
      <span className='add flex center' style={{marginRight:'7px'}}><Link to="/download" state={{type:type,year:year,name:nameDW
 }}>
      <Download width={'15px'}/></Link></span>
