@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const Watch = () => {
  const [searchParams] = useSearchParams();
+ const [currentServer,setCurrentServer]=useState(3)
  const [currentUrl,setCurrentUrl]= useState("")
  const [activeAnime,setActiveAnime]= useState(false)
  const [activeAr_Tr,setActiveAr_Tr]= useState(false)
@@ -52,7 +53,7 @@ useEffect(()=>{
   activeAnimeServer(name,epsoide)
   setActiveAnime(true)
  }else{
-  setCurrentUrl(servers[0].url)
+  setCurrentUrl(servers[parseInt(server)].url)
  }
    
    
@@ -62,7 +63,7 @@ useEffect(()=>{
      <div className="servers flex">
       {servers.map((server,index )=>(
        <div className={`${server.url === currentUrl?"active-server":""}`} key={index} onClick={()=>{
-        setActiveAnime(false)
+        setCurrentServer(index+1)
         setCurrentUrl(server.url)
        }}>server {index+1}</div>
       ))}
@@ -70,7 +71,7 @@ useEffect(()=>{
       {activeAr_Tr && <div>server 5</div>}
       
      </div>
-     {!activeAnime?<iframe src={currentUrl} frameborder="0" title='watch-movie'  allowFullScreen="" allow="encrypted-media"></iframe>:<><video   src={currentUrl} controls autoplay/></>}
+     {!activeAnime && currentServer !== 4?<iframe src={currentUrl} frameborder="0" title='watch-movie'  allowFullScreen="" allow="encrypted-media"></iframe>:<><video   src={currentUrl} controls autoplay/></>}
      {activeAnime && <div className='q-btns flex' >
         {animeUrls?.map(an => (
           <div className={`${currentUrl === an.Link?"active-q":""}`} onClick={()=>{
