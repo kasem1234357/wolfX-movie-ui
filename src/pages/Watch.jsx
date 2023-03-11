@@ -62,6 +62,7 @@ useEffect(()=>{
      <div className="servers flex">
       {servers.map((server,index )=>(
        <div className={`${server.url === currentUrl?"active-server":""}`} key={index} onClick={()=>{
+        setActiveAnime(false)
         setCurrentUrl(server.url)
        }}>server {index+1}</div>
       ))}
