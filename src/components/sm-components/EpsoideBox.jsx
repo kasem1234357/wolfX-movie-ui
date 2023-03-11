@@ -1,10 +1,11 @@
 
-import { Rating } from '../../icons/svgIcon'
-function MoviesBox({boxStyle,data,imageUrl,tvId,season}) {
-
-  const target =()=>{
-    window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}?server=1&ss=2`)
-    }
+import { useNavigate } from 'react-router-dom'
+import { Download, Rating } from '../../icons/svgIcon'
+function MoviesBox({boxStyle,data,imageUrl,tvId,season,genres,originalLanguage,name}) {
+  const nvigate = useNavigate()
+  // const target =()=>{
+  //   window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}`)
+  //   }
   return (
    <div   className={`flex-items bg-main movie-box ${boxStyle} `} 
     style={{margin:'6px',minHeight:'250px'}}>
@@ -19,11 +20,19 @@ function MoviesBox({boxStyle,data,imageUrl,tvId,season}) {
      <div className="controll flex  flex-between text-white">
        <div className="info flow ">
          <h2>Epsoide {data.episode_number}</h2>
-         <div onClick={()=>target()}  className='watch   text-white'>watch Now</div>
+         <div onClick={()=>{
+          if(originalLanguage === "ja" && genres.some(genre =>genre.name === "Animation")){
+            
+            nvigate(`/watch?type=Anime&epsoide=${data.episode_number}&season=${season}&id=${tvId}&server=4&name=${name}`)
+          }else{
+            nvigate(`/watch?type=tv&epsoide=${data.episode_number}&season=${season}&id=${tvId}&server=3`)
+          }
+             
+         }}  className='watch   text-white'>watch Now</div>
        
          
        </div>
-       <div className='flex center' ><span  className='add flex center'>+</span></div>
+       <div className='flex center' ><span  className='add flex center'><Download width={'15px'}/></span></div>
        
      </div>
    </div>
