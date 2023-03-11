@@ -52,6 +52,7 @@ useEffect(()=>{
   console.log("fff");
   activeAnimeServer(name,epsoide)
   setActiveAnime(true)
+  setCurrentServer(4)
  }else{
   setCurrentUrl(servers[parseInt(server)].url)
  }
