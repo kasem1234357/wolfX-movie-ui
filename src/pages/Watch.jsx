@@ -54,7 +54,7 @@ useEffect(()=>{
   setActiveAnime(true)
   setCurrentServer(4)
  }else{
-  setCurrentUrl(servers[parseInt(server)].url)
+  setCurrentUrl(servers[parseInt(server) - 1].url)
  }
    
    
