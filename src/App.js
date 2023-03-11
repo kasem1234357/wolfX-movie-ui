@@ -7,6 +7,7 @@ import {getStatus} from './utils/users'
 import { useDispatch, useSelector } from "react-redux";
 import { restore } from "./utils/movies";
 import { lazy, Suspense, useEffect } from "react";
+import Watch from "./pages/Watch";
 const Account = lazy(()=> import('./pages/Account'))
 const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
@@ -32,6 +33,7 @@ function App() {
          <Route path="explore/:name" element={<Explore />}/>
          <Route path='fav' element={<Faviorate />}/>
          <Route path='download' element={<Download />}/>
+           <Route path='/watch' element={<Watch />}/>
         </Route>
         <Route path='account' element={<Account/>}/>
         </Routes>
