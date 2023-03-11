@@ -74,7 +74,7 @@ useEffect(()=>{
      </div>
      {!activeAnime || currentServer !== 4?<iframe src={currentUrl} frameborder="0" title='watch-movie'  allowFullScreen="" allow="encrypted-media"></iframe>:<><video   src={currentUrl} controls autoplay/></>}
      {activeAnime && <div className='q-btns flex' >
-     {animeUrls !== [] && animeUrls?.map(an => (
+     {animeUrls && animeUrls?.map(an => (
           <div className={`${currentUrl === an.Link?"active-q":""}`} onClick={()=>{
             setCurrentUrl(an.Link)
           }}>{an.Size}p</div>
