@@ -857,7 +857,7 @@ a.direct-link {
 }
 .watch-area video{
   margin-inline: auto;
-  width: 95vw;
+  width: 95%;
   padding: 10px;
   display: block;
 }
