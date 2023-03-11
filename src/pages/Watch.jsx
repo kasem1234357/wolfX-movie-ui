@@ -22,7 +22,7 @@ const activeAnimeServer = (name,epsoide)=>{
       try {
        axios.get(`https://api.iwannawatch.cf/garson.php?Name=${name}&status=list`).then(responce =>{
         console.log(responce.data)
-        const id = responce.data[epsoide-1].ID
+        const id = responce.data[epsoide-1]?.ID
         console.log(id);
         axios.get(`https://api.iwannawatch.cf/garson.php?episode=${id}`).then(res => {
          setanimeUrls(res.data)
