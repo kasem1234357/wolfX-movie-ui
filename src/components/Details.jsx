@@ -4,10 +4,12 @@ import {useDispatch,useSelector}from 'react-redux'
 import { ToggleMovies } from '../utils/toggleMovies';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
+import WarningPopup from './WarningPopup';
 function Details({data3,target,name}) {
   const [checkData,setCheck]=useState(false)
    const nvigate = useNavigate()
   const user = useSelector(state => state.users.user)
+  const [activeWarning,setActiveWarning]=useState(false)
   const movies = useSelector(state =>state.movies.data)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -42,6 +44,7 @@ function Details({data3,target,name}) {
 
   return (
     <div>
+    {activeWarning?<WarningPopup setActiveWarning={setActiveWarning}/>:null}
     <p style={{lineHeight:'1.7'}}>{data3.all.overview}</p>
     <div className="info-box flow " style={{marginTop:'20px'}}>
       <div className="genre  ">
