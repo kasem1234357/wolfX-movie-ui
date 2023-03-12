@@ -90,7 +90,9 @@ function Details({data3,target,name}) {
     }) 
         :navigate("/account")}} className={`add flex center ${!checkData?"":"checked"}`}>{!checkData?"+":<Success color="#fff" width="20px"/>}</span> 
          <span className='add flex center' style={{margin:'7px'}}  >
-     <Warning width={'15px'}/></span>
+     <Warning width={'15px'} onClick={()=>{
+      setActiveWarning(true)
+     }}/></span>
       </div>
     </div>
   )
