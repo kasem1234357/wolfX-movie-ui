@@ -39,8 +39,13 @@ function Details({data3,target,name}) {
   
   // }
   useEffect(()=>{
-    setCheck(movies?.some(mv => mv.imdb_id === data3.all.imdb_id))
-  },[movies,data3])
+    if(name === "movie"){
+      setCheck(movies?.some(mv => mv.imdb_id === data3.all.imdb_id))
+    }
+     else{
+      setCheck(movies?.some(mv => mv.id === data3.all.id))
+     }
+  },[movies,data3,name])
 
   return (
     <div>
