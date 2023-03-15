@@ -78,6 +78,7 @@
    /* height: 120%; */
    padding-left: 5px;
    display: grid;
+   cursor: pointer;
    place-items: center;
    cursor: pointer;
  }
@@ -111,7 +112,7 @@
    gap: 10px;
    
  }
- .advanced-filter-mobile .select-area{
+ .advanced-filter-mobile .select-area, .advanced-filter-mobile .btns-area{
    width: 0;
    visibility: hidden;
    transform: scale(0);
@@ -144,6 +145,15 @@
    cursor: pointer;
    box-shadow: 0px 5px 16px rgb(0 0 0 / 50%);
  }
+.active-mobile-filter .btns-area{
+  width: auto;
+  visibility: visible;
+  transform: scale(1);
+  transition: 0.5s;
+  transition-property: width, transform, height;
+  align-items: flex-start;
+  justify-content: center;
+}
  .select-items-box {
    height: 0;
    width: 100%;
