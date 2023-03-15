@@ -47,13 +47,6 @@ const Feed =memo(({active,setActive}) => {
        dispatch(searchUpdate(e.target.value) )
        ;}}/>
        <div className="mobile-filter-icon" onClick={()=>{
-        if(activeFilter){
-            if(window.location.pathname === ('/explore/tv')){
-                navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.id)],origin:[...filterData.country.map(d =>d.id)] } })
-               }else{
-                navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.id)],origin:[...filterData.country.map(d =>d.id)] } })
-               }
-        }
         setActiveFilter(!activeFilter)
       setCurrentSelect("")}}><Filter width="20px" color="#DEE2E6"/></div>
        
@@ -180,6 +173,24 @@ const Feed =memo(({active,setActive}) => {
     </div>
        
         </div>
+         <div className="btns-area flex flex-between">
+    <button onClick={()=>{
+        setActiveFilter(false)
+    }}>exit</button>
+    </div>
+    <div className="btns-area flex ">
+
+    <button onClick={()=>{
+        if(activeFilter){
+            if(window.location.pathname === ('/explore/tv')){
+                navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.id)],origin:[...filterData.country.map(d =>d.id)] } })
+               }else{
+                navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.id)],origin:[...filterData.country.map(d =>d.id)] } })
+               }
+        }
+        setActiveFilter(false)
+    }}>filter</button>
+    </div>
     </div>
 {/*============= url to the the mian pages==============================*/ }
           
