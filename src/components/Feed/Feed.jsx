@@ -173,7 +173,7 @@ const Feed =memo(({active,setActive}) => {
     </div>
        
         </div>
-         <div className="btns-area flex flex-between">
+         <div className="btns-area flex ">
     <button onClick={()=>{
         setActiveFilter(false)
     }}>exit</button>
