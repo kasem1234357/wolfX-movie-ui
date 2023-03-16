@@ -11,7 +11,7 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
   }
  if(check){
    try {
-     axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/deleteMovie`,{...data.all,typeShow:name}).then(() =>{
+     axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/deleteMovie`,{movieId : data.id}).then(() =>{
        dispatch(deleteMovies({...data,typeShow:name}))
      })
    } catch (error) {
