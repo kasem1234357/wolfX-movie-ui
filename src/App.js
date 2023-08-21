@@ -7,6 +7,7 @@ import {getStatus} from './utils/users'
 import { useDispatch, useSelector } from "react-redux";
 import { restore } from "./utils/movies";
 import { lazy, Suspense, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import Watch from "./pages/Watch";
 const Account = lazy(()=> import('./pages/Account'))
 const Faviorate = lazy(()=> import('./pages/Faviorate'))
@@ -40,7 +41,7 @@ function App() {
     </Suspense>
      {/* { popUpOpen && (<PopUp type={typePopup}/>) } */}
        
-      
+     <ToastContainer/>
     </>
    
     
