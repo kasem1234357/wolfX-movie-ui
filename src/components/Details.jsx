@@ -75,7 +75,7 @@ function Details({data3,target,name}) {
     </div>
     <div className='flex ' style={{alignItems:'center'}} >
       {name === 'tv'?null: <span className='watch ' onClick={()=>{
-           nvigate(`/watch?id=${data3.all.imdb_id}&server=3`)
+           nvigate(`/watch?id=${data3.all.imdb_id}&server=2`)
         // target(data3.all.imdb_id)
         
         }} >watch Now</span>}
