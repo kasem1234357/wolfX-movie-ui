@@ -1,8 +1,10 @@
 import {createSlice,createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
+import observable from './notification';
 const initialState = {
  user:null,
  status:"idle",
+ notification:true,
  error : null //loading || success || failure 
 }
 const LOG_URL ="https://wolfx-movie.onrender.com/api/auth/login"
@@ -23,7 +25,12 @@ export const userSlice = createSlice({
         state.status = "succeeded"
         state.user = action.payload
         localStorage.setItem('user', JSON.stringify(action.payload._id));
-    }
+    },
+    toggleNotification:(state)=>{
+        state.notification = !state.notification
+        const msg = state.notification?"activated now":"unactivated now"
+        observable.notify({type:"info",msg});
+     },
  },
  extraReducers(builder){
   builder

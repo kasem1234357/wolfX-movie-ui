@@ -1,6 +1,7 @@
 import {addMovie, deleteMovies} from '../utils/movies'
 
 import axios from 'axios'
+import { handleClick } from './notificationConfig'
 
 export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
  let check = false
@@ -13,17 +14,21 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
    try {
      axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/deleteMovie`,{movieId : data.id}).then(() =>{
        dispatch(deleteMovies({...data,typeShow:name}))
+       handleClick({type:"warning",msg:"deleting movie from faviorate"})
      })
    } catch (error) {
+    handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
    }
  }else{
    try {
      axios.put(`https://wolfx-movie.onrender.com/api/users/${user._id}/addMovie`,{data:{...data,typeShow:name}}).then((responce) =>{
        dispatch(addMovie({...data,typeShow:name}))
+       handleClick({type:"success",msg:"movie added successifly"})
        setCheck(true)
      })
    } catch (error) {
+    handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
    }
  }
