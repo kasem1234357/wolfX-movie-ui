@@ -8,7 +8,8 @@ function FilterBox({setActiveFilter,setActive}) {
   const [filterOptions,SetFilterOptions] = useState({
     years:[],
     age:[],
-    dataType:[]
+    dataType:[],
+    country:[]
   })
   const navigate = useNavigate()
   return (
@@ -54,12 +55,20 @@ function FilterBox({setActiveFilter,setActive}) {
             </div>
         <div >
          <div className="title">
-          <h3>Section</h3>
+          <h3>country</h3>
          </div>
          <div className="filter-item-box flex flex-between fw-row">
-             {filterApi.country.map(country =>{
+             {filterApi.country.map(({id,name},index) =>{
             
-            return <div className="popUp-filter bg-white">{country.name}</div>
+            return (<div className={`popUp-filter  
+            ${filterOptions.country.some(data => data === id) ? 'active-popUp':'bg-white'} `
+            } 
+           key={index} onClick={()=>{
+            filterOptions.country.some(data => data === id)?SetFilterOptions((prev)=>{
+              return {...prev,country:prev.country.filter(data => data !== id)}}): SetFilterOptions((prev)=>{
+               return {...prev,country:[...prev.country,id]}})
+              }
+          } >{name}</div>)
           })}
          </div>
         </div>
