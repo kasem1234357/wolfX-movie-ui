@@ -57,9 +57,9 @@ function FilterBox({setActiveFilter,setActive}) {
           <h3>Section</h3>
          </div>
          <div className="filter-item-box flex flex-between fw-row">
-             {filterApi.type.map(origin =>{
+             {filterApi.country.map(country =>{
             
-            return <div className="popUp-filter bg-white">{origin.name}</div>
+            return <div className="popUp-filter bg-white">{country.name}</div>
           })}
          </div>
         </div>
