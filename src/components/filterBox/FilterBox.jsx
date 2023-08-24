@@ -99,9 +99,9 @@ function FilterBox({setActiveFilter,setActive}) {
         setActiveFilter(false)
         console.log(filterOptions);
 if(window.location.pathname === ('/explore/tv')){
-  navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType } })
+  navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType,origin:filterOptions.country } })
  }else{
-  navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType } })
+  navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterOptions.years,filter:filterOptions.dataType,origin:filterOptions.country } })
  }
  setActive(false)
        }}>done</button>
