@@ -41,10 +41,12 @@ export const userSlice = createSlice({
    state.status = 'succeeded'
    state.user = action.payload
    localStorage.setItem('user', JSON.stringify(action.payload._id));
+   observable.notify({type:"success",msg:"login done"});
   })
   .addCase(logUser.rejected, (state, action) => {
    state.status = 'failed'
    state.error = action.error.message
+   observable.notify({type:"error",msg:"something going wrong"});
 }).addCase(getUser.pending, (state, action) => {
     state.status = 'loading'
 })
