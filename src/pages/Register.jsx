@@ -36,6 +36,11 @@ function Register() {
         dispatch(addUser(responce.data))
         console.log(responce.data)
        Navigate('/')
+      }).catch(error =>{
+        if(error.response){ 
+          handleClick({type:"error",msg:error.response.data.msg})
+        };
+        
       })
     } catch (error) {
       handleClick({type:"error",msg:"something going wrong try again later"})
