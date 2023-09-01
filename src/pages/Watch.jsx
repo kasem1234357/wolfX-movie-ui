@@ -36,7 +36,7 @@ const activeAnimeServer = (name,epsoide)=>{
 
 const servers = [{
  type:"all",
- url:`${(type === "tv") ||(type === "Anime")?`https://www.2embed.to/embed/tmdb/tv?id=${idshow}&s=${season}&e=${epsoide}`:`https://www.2embed.to/embed/imdb/movie?id=${idshow}`}`
+ url:`${(type === "tv") ||(type === "Anime")?`https://autoembed.to/${type}/tmdb/${idshow}-${season}-${epsoide}`:`https://autoembed.to/movie/imdb/${idshow}`}`
 },
 {
  type:"all",
