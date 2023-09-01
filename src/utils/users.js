@@ -7,8 +7,8 @@ const initialState = {
  notification:true,
  error : null //loading || success || failure 
 }
-const LOG_URL ="https://wolfx-movie.onrender.com/api/auth/login"
-const GET_USER = "https://wolfx-movie.onrender.com/api/users/"
+const LOG_URL ="https://wolfxmovie2.onrender.com/auth/login"
+const GET_USER = "https://wolfxmovie2.onrender.com/api/users/"
 export const logUser = createAsyncThunk('user/checkUser', async (initialUser) => {
  const response = await axios.post(LOG_URL, initialUser)
  return response.data
