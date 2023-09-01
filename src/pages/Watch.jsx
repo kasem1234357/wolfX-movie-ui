@@ -72,7 +72,8 @@ useEffect(()=>{
       {activeAr_Tr && <div>server 5</div>}
       
      </div>
-     {!activeAnime || currentServer !== 4?<iframe src={currentUrl} frameborder="0" title='watch-movie'  allowFullScreen="" allow="encrypted-media"></iframe>:<><video   src={currentUrl} controls autoplay/></>}
+     {!activeAnime || currentServer !== 4?<iframe src={currentUrl} frameborder="0" title='watch-movie'  allowFullScreen  style={{ border: "none" }}
+        SameSite="None" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>:<><video   src={currentUrl} controls autoplay/></>}
      {activeAnime && <div className='q-btns flex' >
      {animeUrls && animeUrls?.map(an => (
           <div className={`${currentUrl === an.Link?"active-q":""}`} onClick={()=>{
