@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 // import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../controlls/FormInput';
+import { handleClick } from '../utils/notificationConfig';
 import { addUser } from '../utils/users';
 // import { contextData } from '../dataBase/context';
 import { schema } from '../utils/validateSchema';
@@ -31,11 +32,13 @@ function Register() {
         email:values.email,
         password:values.password
       }).then(responce => {
+        handleClick({type:"success",msg:"user added"})
         dispatch(addUser(responce.data))
         console.log(responce.data)
        Navigate('/')
       })
     } catch (error) {
+      handleClick({type:"error",msg:"something going wrong try again later"})
       console.log(error);
     }
    
