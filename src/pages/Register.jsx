@@ -26,7 +26,7 @@ function Register() {
         email:values.email,
         password:values.password
       });
-      axios.post('https://wolfx-movie.onrender.com/api/auth/register',{
+      axios.post('https://wolfxmovie2.onrender.com/api/auth/register',{
         userName:values.userName,
         email:values.email,
         password:values.password
