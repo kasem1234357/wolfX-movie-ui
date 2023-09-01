@@ -10,7 +10,7 @@ const initialState = {
 const LOG_URL ="https://wolfxmovie2.onrender.com/auth/login"
 const GET_USER = "https://wolfxmovie2.onrender.com/api/users/"
 export const logUser = createAsyncThunk('user/checkUser', async (initialUser) => {
- const response = await axios.post(LOG_URL, initialUser.initialUser)
+ const response = await axios.post(LOG_URL, initialUser)
  return response.data
 })
 export const getUser = createAsyncThunk("user/getUser",async (userId)=>{
