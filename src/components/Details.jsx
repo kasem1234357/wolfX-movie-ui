@@ -118,7 +118,7 @@ function Details({ data3, target, name }) {
         </span>
         {
           (loading ||(status === 'loading'))?
-          <span className="flex add center loaderX" >
+          <span className="loaderX" >
 
           </span>:
           <span
