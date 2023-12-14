@@ -124,6 +124,7 @@ function Details({ data3, target, name }) {
           </span>:
           <span
           onClick={() => {
+            setLoading(true)
             user
               ? ToggleMovies({
                   dispatch,
