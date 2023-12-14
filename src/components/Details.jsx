@@ -125,6 +125,7 @@ function Details({ data3, target, name }) {
           <span
           onClick={() => {
             setLoading(true)
+            console.log(loading,(loading ||(status === 'loading')));
             user
               ? ToggleMovies({
                   dispatch,
