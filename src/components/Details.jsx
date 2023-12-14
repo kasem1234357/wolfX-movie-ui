@@ -47,7 +47,6 @@ function Details({ data3, target, name }) {
 
   // }
   useEffect(() => {
-    console.log((loading ||(status === 'loading')));
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
     } else {
@@ -118,14 +117,12 @@ function Details({ data3, target, name }) {
           </Link>
         </span>
         {
-          (loading ||(status === 'loading'))?
+          loading?
           <span className="loaderX" >
 
           </span>:
           <span
           onClick={() => {
-            setLoading(true)
-            console.log(loading,(loading ||(status === 'loading')));
             user
               ? ToggleMovies({
                   dispatch,
