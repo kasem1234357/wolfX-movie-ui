@@ -3,7 +3,8 @@ import {addMovie, deleteMovies} from '../utils/movies'
 import axios from 'axios'
 import { handleClick } from './notificationConfig'
 
-export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
+export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies,setLoading})=>{
+  setLoading(true)
  let check = false
   if(name === "movie"){
      check = movies?.some(movie => movie.imdb_id === data.imdb_id)
@@ -19,6 +20,8 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
    } catch (error) {
     handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
+   } finally {
+    setLoading(false)
    }
  }else{
    try {
@@ -30,6 +33,8 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies})=>{
    } catch (error) {
     handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
+   } finally {
+    setLoading(false)
    }
  }
 
