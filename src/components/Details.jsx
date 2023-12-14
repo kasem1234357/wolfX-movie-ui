@@ -47,6 +47,7 @@ function Details({ data3, target, name }) {
 
   // }
   useEffect(() => {
+    console.log((loading ||(status === 'loading')));
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
     } else {
