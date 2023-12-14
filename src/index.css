@@ -1012,7 +1012,7 @@ a.direct-link {
 .flex-items.bg-main.movie-box.large-movie {
   max-height: 270px;
 }
-.loaderX {
+.loaderX,.loaderX2 {
   width: 30px;
   height: 30px;
   border: 3px solid #FFF;
@@ -1023,7 +1023,11 @@ a.direct-link {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
   }
-
+.loaderX2{
+  width: 50px;
+  height: 50px;
+  background: transparent;
+}
   @keyframes rotation {
   0% {
       transform: rotate(0deg);
