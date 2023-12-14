@@ -16,10 +16,13 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies,setLoading
      axios.put(`https://wolfxmovie2.onrender.com/api/users/${user._id}/deleteMovie`,{movieId : data.id}).then(() =>{
        dispatch(deleteMovies({...data,typeShow:name}))
        handleClick({type:"warning",msg:"deleting movie from faviorate"})
+
      })
+     setLoading(false)
    } catch (error) {
     handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
+     setLoading(false)
    } finally {
     setLoading(false)
    }
@@ -28,14 +31,13 @@ export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies,setLoading
      axios.put(`https://wolfxmovie2.onrender.com/api/users/${user._id}/addMovie`,{data:{...data,typeShow:name}}).then((responce) =>{
        dispatch(addMovie({...data,typeShow:name}))
        handleClick({type:"success",msg:"movie added successifly"})
-       setCheck(true)
      })
+     setCheck(true)
    } catch (error) {
     handleClick({type:"error",msg:"some thing going wrong"})
      console.error(error)
-   } finally {
-    setLoading(false)
-   }
+     setCheck(true)
+   } 
  }
 
 }
