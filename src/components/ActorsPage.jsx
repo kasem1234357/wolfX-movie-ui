@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { fetchUrl } from '../controlls/FetshingUrl'
+import Loading from './Loading'
 
 function ActorsPage() {
     const location = useLocation()
