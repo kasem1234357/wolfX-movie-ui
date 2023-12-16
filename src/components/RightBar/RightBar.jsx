@@ -54,13 +54,15 @@ const RightBar = memo(({active,setActive}) => {
     <div className="pages-box flex flex-between fw-row">
       <div className={`flex-items page-router ${url ==="movie"?"active-page":""}`}><Link to='/explore/movie'>Movies</Link></div>
       <div className={`flex-items page-router ${url ==="tv"?"active-page":""}`}> <Link to='/explore/tv'>Shows</Link></div>
-      <div className={`flex-items page-router ${url ==="actors"?"active-page":""}`}>Actors</div>
+      <div className={`flex-items page-router ${url ==="actors"?"active-page":""}`}><Link to='exploreActors'>Actors</Link></div>
     </div>
     <div className="search bg-dark flex center text-gray">
      <img className="" src={search}alt=""  />
      <input className='Search-input' type="search" name="" id="" onInput={(e)=>{
        if(window.location.pathname === ('/explore/tv')){
         navigate("explore/tv",{ state: { dataType: 'search' } })
+       }else if(window.location.pathname === ('exploreActors')){
+        navigate("exploreActors",{ state: { dataType: 'searchByActor'} })
        }else{
         navigate("explore/movie",{ state: { dataType: 'search'} })
        }
@@ -68,7 +70,11 @@ const RightBar = memo(({active,setActive}) => {
         if(window.location.pathname === ('/explore/tv')){
           navigate("explore/tv",{ state: { dataType: 'explore' } })
           
-         }else{
+         }else if(window.location.pathname === ('exploreActors')){
+          navigate("exploreActors",{ state: { dataType: 'exploreActor' } })
+         }
+        
+         else{
           navigate("explore/movie",{ state: { dataType: 'explore',filter:filterID  } })
          }
        }

@@ -31,6 +31,7 @@ function App() {
          <Route path="" element={<Main />}/>
          <Route path="/MoviePage" element={<MoviePage />}/>
          <Route path="notification" element={<Notification/>}/>
+         <Route path="exploreActors" element={<ActorsPage />}/>
          <Route path="explore/:name" element={<Explore />}/>
          <Route path='fav' element={<Faviorate />}/>
          <Route path='download' element={<Download />}/>
