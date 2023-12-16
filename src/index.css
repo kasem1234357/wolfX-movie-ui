@@ -1041,3 +1041,11 @@ a.direct-link {
       transform: rotate(360deg);
   }
   } 
+.actorBox {
+    padding: 10px;
+    color: #fff;
+    gap: 10px;
+    text-align: center;
+    display: grid;
+    background: #353b41;
+}
