@@ -50,14 +50,14 @@ const fetchData =useCallback( (pageNumber,dataStore) => {
     console.log(error);
   }
  
-},[dataType,name,query,filter])
+},[dataType,query,filter])
 useEffect(()=>{
    setData([])
    setPage(1);
    fetchData(1,[]);
    
    
-},[name,query,fetchData]);
+},[query,fetchData]);
 
 useEffect(()=>{
   if(data !== [] && data.length > 10){
