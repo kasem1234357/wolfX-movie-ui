@@ -15,6 +15,7 @@ const Notification = lazy(()=> import("./pages/Notification"))
 const MoviePage = lazy(()=> import("./pages/MoviePage"))
 const Explore = lazy(()=> import("./components/Explore"))
 const Download  = lazy(()=> import("./pages/Download"))
+const ActorsPage = lazy(()=> import("./components/ActorsPage"))
 function App() {
 
   const status = useSelector(getStatus)
