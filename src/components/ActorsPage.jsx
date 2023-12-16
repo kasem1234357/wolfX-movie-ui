@@ -1,8 +1,12 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-import { fetchUrl } from '../controlls/FetshingUrl'
-import Loading from './Loading'
-
+import axios from 'axios';
+import React, { Suspense, useEffect, useState } from 'react'
+import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams,useLocation } from 'react-router-dom';
+import Loading from './Loading';
+import {fetchUrl} from '../controlls/FetshingUrl'
+import { useMemo } from 'react';
+import { useCallback } from 'react';
 function ActorsPage() {
     const location = useLocation()
     const dataType = location.state?location.state.dataType:'exploreActor'
