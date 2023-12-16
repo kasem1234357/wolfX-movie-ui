@@ -71,7 +71,7 @@ const callbackFunction=(entries)=>{
   return (
     <Suspense fallback={<Loading/>}>
     <div className='flex flex-around fw-row' style={{gap:"10px"}}>
-     { data?.map((actor)=>(
+     { data?.filter(dt => dt.profile_path).map((actor)=>(
     <div className='actorBox'>
      <img src={`https://image.tmdb.org/t/p/original${actor?.profile_path} `} alt="" srcset="" />
      {actor.name}</div>
