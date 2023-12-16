@@ -61,7 +61,7 @@ const RightBar = memo(({active,setActive}) => {
      <input className='Search-input' type="search" name="" id="" onInput={(e)=>{
        if(window.location.pathname === ('/explore/tv')){
         navigate("explore/tv",{ state: { dataType: 'search' } })
-       }else if(window.location.pathname === ('exploreActors')){
+       }else if(window.location.pathname === ('/exploreActors')){
         navigate("exploreActors",{ state: { dataType: 'searchByActor'} })
        }else{
         navigate("explore/movie",{ state: { dataType: 'search'} })
@@ -70,7 +70,7 @@ const RightBar = memo(({active,setActive}) => {
         if(window.location.pathname === ('/explore/tv')){
           navigate("explore/tv",{ state: { dataType: 'explore' } })
           
-         }else if(window.location.pathname === ('exploreActors')){
+         }else if(window.location.pathname === ('/exploreActors')){
           navigate("exploreActors",{ state: { dataType: 'exploreActor' } })
          }
         
