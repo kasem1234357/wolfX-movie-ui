@@ -4,7 +4,7 @@ export const fetchUrl ={
 },
 exploreActor:(page)=>{
     
-  return ` /trending/person/week?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false`
+  return `${process.env.REACT_APP_URL}/trending/person/week?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false`
 },
 searchByActor:(page,query)=>{
   return `${process.env.REACT_APP_URL}search/person?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`;
