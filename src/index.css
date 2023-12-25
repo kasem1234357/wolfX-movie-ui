@@ -556,6 +556,10 @@ bottom, black, #914747c9);
   padding: 10px;
   z-index: 2;
 }
+.actor-poster{
+  padding: 10px;
+  z-index: 2;
+}
 .item-space{
   padding-right: var(--right-padding,50px);
 }
@@ -812,9 +816,10 @@ bottom, black, #914747c9);
   -webkit-filter: blur(7px);
           filter: blur(7px);
 }
-.details-movie{
+.details-movie,.details-actor{
   z-index: 11;
 }
+
 .direct-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1044,8 +1049,21 @@ a.direct-link {
 .actorBox {
     padding: 10px;
     color: #fff;
+    cursor: pointer;
     gap: 10px;
     text-align: center;
     display: grid;
     background: #353b41;
+}
+
+.load-btn {
+  padding: 10px;
+  background: #72787e;
+  text-align: center;
+  border: 1px solid #72787e;
+  border-radius: 45px;
+  width: 115px;
+  margin-inline: auto;
+  color: white;
+  cursor: pointer;
 }

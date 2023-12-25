@@ -9,6 +9,7 @@ import { restore } from "./utils/movies";
 import { lazy, Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import Watch from "./pages/Watch";
+import ActorMovies from "./components/ActorMovies";
 const Account = lazy(()=> import('./pages/Account'))
 const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
@@ -33,6 +34,7 @@ function App() {
          <Route path="/MoviePage" element={<MoviePage />}/>
          <Route path="notification" element={<Notification/>}/>
          <Route path="exploreActors" element={<ActorsPage />}/>
+         <Route path="exploreActors/actor" element={<ActorMovies />}/>
          <Route path="explore/:name" element={<Explore />}/>
          <Route path='fav' element={<Faviorate />}/>
          <Route path='download' element={<Download />}/>

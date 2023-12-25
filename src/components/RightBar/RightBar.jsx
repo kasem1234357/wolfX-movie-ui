@@ -54,7 +54,7 @@ const RightBar = memo(({active,setActive}) => {
     <div className="pages-box flex flex-between fw-row">
       <div className={`flex-items page-router ${url ==="movie"?"active-page":""}`}><Link to='/explore/movie'>Movies</Link></div>
       <div className={`flex-items page-router ${url ==="tv"?"active-page":""}`}> <Link to='/explore/tv'>Shows</Link></div>
-      <div className={`flex-items page-router ${url ==="actors"?"active-page":""}`}><Link to='exploreActors'>Actors</Link></div>
+      <div className={`flex-items page-router ${url ==="exploreActors"?"active-page":""}`}><Link to='exploreActors'>Actors</Link></div>
     </div>
     <div className="search bg-dark flex center text-gray">
      <img className="" src={search}alt=""  />

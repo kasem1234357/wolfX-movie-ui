@@ -2,12 +2,13 @@ import axios from 'axios';
 import React, { Suspense, useEffect, useState } from 'react'
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams,useLocation } from 'react-router-dom';
+import { useParams,useLocation, useNavigate } from 'react-router-dom';
 import Loading from './Loading';
 import {fetchUrl} from '../controlls/FetshingUrl'
 import { useMemo } from 'react';
 import { useCallback } from 'react';
 function ActorsPage() {
+  const navigate = useNavigate()
     const location = useLocation()
     const dataType = location.state?location.state.dataType:'exploreActor'
     const filter = location.state?location.state.filter:''
@@ -72,7 +73,10 @@ const callbackFunction=(entries)=>{
     <Suspense fallback={<Loading/>}>
     <div className='flex center fw-row' style={{gap:"20px"}}>
      { data?.filter(dt => dt.profile_path).map((actor)=>(
-    <div className='actorBox'>
+    <div className='actorBox' onClick={()=>{
+
+      navigate(`/exploreActors/actor?id=${actor.id}&name=${actor.original_name}`)
+    }}>
      <img src={`https://image.tmdb.org/t/p/original${actor?.profile_path} `} alt="" srcset="" />
      {actor.name}</div>
    ))}
