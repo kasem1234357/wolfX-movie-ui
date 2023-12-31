@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import { Warning } from '../icons/svgIcon'
-const WarningPopup = ({setActiveWarning}) => {
+import { sendReports } from '../utils/sendReports'
+const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
   const [problemType,setProblemType] = useState([])
+  const [isLoading,setIsLoading]= useState(false)
+  const textAreaRef = useRef('')
   return (
     <div className='Warning-Popup'>
      <div className="warning-box">
@@ -75,12 +78,24 @@ const WarningPopup = ({setActiveWarning}) => {
     	<span>others</span>
     </label>
     </div>
-    {problemType.some(d => d === "others")?<textarea placeholder='write your problem...' />:null}
+    {problemType.some(d => d === "others")?<textarea ref={textAreaRef} placeholder='write your problem...' />:null}
     <div className="btns-area flex flex-between">
     <button  onClick={()=>{
       setActiveWarning(false)
     }}>exit</button>
-    <button >send</button>
+    {!isLoading?<button onClick={()=>{
+      sendReports(userId,{
+        type,
+        showName,
+        problemType,
+        showId,
+        userMsg:textAreaRef?.current.value
+      },setIsLoading)
+      setActiveWarning(false)
+    }}>send</button>: <span className="loaderX" >
+
+    </span>}
+    
     </div>
 
      </div>

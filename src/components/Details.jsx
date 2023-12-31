@@ -5,7 +5,7 @@ import { ToggleMovies } from "../utils/toggleMovies";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import WarningPopup from "./WarningPopup";
-function Details({ data3, target, name }) {
+function Details({ data3, target, name,showId }) {
   const [checkData, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const nvigate = useNavigate();
@@ -22,30 +22,9 @@ function Details({ data3, target, name }) {
   const nameDW =
     data3.all.name ||
     data3.all
-      .title; /*name ==="movie"?data3?.all.original_title.split(" ").join(".")+".":data3?.all.original_name.split(" ").join(".")+"."*/
+      .title; 
   const type = name === "movie" ? "Movie" : "Series";
-  // const ToggleMovies = ()=>{
-  //   const check = movies?.some(movie => movie.imdb_id === data3.all.imdb_id)
-  //   if(check){
-  //     try {
-  //       axios.put(`http://localhost:8800/api/users/${user._id}/deleteMovie`,{...data3.all,typeShow:name}).then(() =>{
-  //         dispatch(deleteMovies({...data3.all,typeShow:name}))
-  //       })
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }else{
-  //     try {
-  //       axios.put(`http://localhost:8800/api/users/${user._id}/addMovie`,{data:{...data3.all,typeShow:name}}).then((responce) =>{
-  //         dispatch(addMovie({...data3.all,typeShow:name}))
-  //         setCheck(true)
-  //       })
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }
-
-  // }
+  
   useEffect(() => {
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
@@ -57,7 +36,7 @@ function Details({ data3, target, name }) {
   return (
     <div>
       {activeWarning ? (
-        <WarningPopup setActiveWarning={setActiveWarning} />
+        <WarningPopup setActiveWarning={setActiveWarning} userId ={user?._id} type={name} showName={data3.all.title?data3.all.title:data3.all.name} showId={showId}/>
       ) : null}
       <p style={{ lineHeight: "1.7" }}>{data3.all.overview}</p>
       <div className="info-box flow " style={{ marginTop: "20px" }}>
@@ -146,7 +125,7 @@ function Details({ data3, target, name }) {
           <Warning
             width={"15px"}
             onClick={() => {
-              setActiveWarning(true);
+              user?setActiveWarning(true): navigate("/account");
             }}
           />
         </span>

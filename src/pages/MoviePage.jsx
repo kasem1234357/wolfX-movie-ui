@@ -27,7 +27,7 @@ const contentLoad =(n)=>{
   
   switch (n) {
     case 1:
-      return <Details data3={data3} target={target} name={name}/>
+      return <Details data3={data3} target={target} name={name} showId={idMovie}/>
 
       case 2:
         
