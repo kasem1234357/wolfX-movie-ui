@@ -38,7 +38,7 @@ function Register() {
        Navigate('/')
       }).catch(error =>{
         if(error.response){ 
-          handleClick({type:"error",msg:error.response.data.msg})
+          handleClick({type:"error",msg:error.response.data.error})
         };
         
       })
