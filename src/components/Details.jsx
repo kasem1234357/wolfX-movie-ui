@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Download, Success, Warning } from "../icons/svgIcon";
+import { Download, Success, Warning } from "./icons/svgIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleMovies } from "../utils/toggleMovies";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import WarningPopup from "./WarningPopup";
+import WarningPopup from "./Boxes/WarningBox/WarningPopup";
+import Spiner from "./custom/Spiner";
 function Details({ data3, target, name,showId }) {
   const [checkData, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -96,10 +97,7 @@ function Details({ data3, target, name,showId }) {
           </Link>
         </span>
         {
-          loading?
-          <span className="loaderX" >
-
-          </span>:
+          loading?<Spiner type="X"/>:
           <span
           onClick={() => {
             user
@@ -125,7 +123,7 @@ function Details({ data3, target, name,showId }) {
           <Warning
             width={"15px"}
             onClick={() => {
-              user?setActiveWarning(true): navigate("/account");
+              setActiveWarning(true);
             }}
           />
         </span>

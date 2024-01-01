@@ -3,12 +3,12 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams,useLocation } from 'react-router-dom';
-import Loading from './Loading';
-import {fetchUrl} from '../controlls/FetshingUrl'
+import Loading from './custom/Loading';
+import {fetchUrl} from '../utils/FetshingUrl'
 import { useMemo } from 'react';
 import { useCallback } from 'react';
 import { lazy } from 'react';
-const MoviesBox = lazy(()=> import("./sm-components/MoviesBox"))
+const MoviesBox = lazy(()=> import("./Boxes/MovieBox/MoviesBox"))
 function Explore() {
   const location = useLocation()
   const dataType = location.state?location.state.dataType:'explore'
@@ -68,9 +68,7 @@ useEffect(()=>{
     if(refContent) observer.unobserve(refContent)
    }}
 },[callbackFunction,opt]);
-// if(loading){
-//   return <Loading/>
-// }
+
   return (
     <Suspense fallback={<Loading/>}>
        <div className='flex  fw-row' style={{justifyContent:'space-around',alignItems:'center'}}>

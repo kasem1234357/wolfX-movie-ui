@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {fetchUrl} from '../controlls/FetshingUrl'
-import Loading from './Loading'
-import EpsoideBox from './sm-components/EpsoideBox'
+import {fetchUrl} from '../utils/FetshingUrl'
+import Loading from './custom/Loading'
+import EpsoideBox from './Boxes/EpsoideBox/EpsoideBox'
 function Epsoides({tvId,season,imageUrl,genres,originalLanguage,name}) {
  const [data,setData]=useState([])
  const [loading,setLoading]=useState(true)

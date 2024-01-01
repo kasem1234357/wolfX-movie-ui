@@ -1,6 +1,6 @@
 import React from 'react'
 import './popup.css'
-import {Close,Success, Warning} from '../../icons/svgIcon'
+import {Close,Success, Warning} from '../icons/svgIcon'
 function PopUp({type,data}) {
   return (
     <div className={`popup-box ${type} `}>

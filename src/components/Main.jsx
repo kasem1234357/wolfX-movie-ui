@@ -3,10 +3,10 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {Link } from 'react-router-dom'
-import ScrollBox from '../controlls/ScrollBox';
-import { Arrow } from '../icons/svgIcon';
-import Loading from './Loading';
-import {fetchUrl} from '../controlls/FetshingUrl'
+import ScrollBox from './Boxes/ScrollBox/ScrollBox';
+import { Arrow } from './icons/svgIcon';
+import Loading from './custom/Loading';
+import {fetchUrl} from '../utils/FetshingUrl'
 function Main() {
   const [data3,setData]=useState({
     all:[],

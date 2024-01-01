@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSearchParams} from 'react-router-dom';
-import Loading from '../components/Loading';
-import {  Rating } from '../icons/svgIcon';
-import {fetchUrl} from '../controlls/FetshingUrl'
+import Loading from '../components/custom/Loading';
+import {  Rating } from '../components/icons/svgIcon';
+import {fetchUrl} from '../utils/FetshingUrl'
 import Details from '../components/Details';
-import Embeded from '../controlls/Embeded';
+import Embeded from '../components/custom/Embeded';
 import Similier from '../components/Similier';
 import Epsoides from '../components/Epsoides';
 import Actors from '../components/Actors';

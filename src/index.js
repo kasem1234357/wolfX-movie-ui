@@ -4,8 +4,8 @@ import App from './App';
 import {BrowserRouter as Router} from 
 'react-router-dom'
 import { Provider } from 'react-redux'
-import {store} from './dataBase/store'
-import { getUser } from './utils/users';
+import {store} from './redux/store'
+import { getUser } from './redux/actions/auth/index';
 const userId = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
 store.dispatch(getUser({userId:userId}))
 ReactDOM.render(

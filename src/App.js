@@ -1,22 +1,22 @@
 
 import {  Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
-import Loading from "./components/Loading";
+import Loading from "./components/custom/Loading";
 import Main from "./components/Main";
-import {getStatus} from './utils/users'
+import {getStatus} from './redux/slices/userSlice'
 import { useDispatch, useSelector } from "react-redux";
-import { restore } from "./utils/movies";
+import { restore } from "./redux/slices/movieSlice";
 import { lazy, Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import Watch from "./pages/Watch";
-import ActorMovies from "./components/ActorMovies";
+import ActorMovies from "./pages/ActorMovies";
 const Account = lazy(()=> import('./pages/Account'))
 const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
 const MoviePage = lazy(()=> import("./pages/MoviePage"))
 const Explore = lazy(()=> import("./components/Explore"))
 const Download  = lazy(()=> import("./pages/Download"))
-const ActorsPage = lazy(()=> import("./components/ActorsPage"))
+const ActorsPage = lazy(()=> import("./pages/ActorsPage"))
 function App() {
 
   const status = useSelector(getStatus)

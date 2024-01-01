@@ -49,7 +49,6 @@ const servers = [{
 ]
 useEffect(()=>{
  if(server === "4" && type === "Anime"){
-  console.log("fff");
   activeAnimeServer(name,epsoide)
   setActiveAnime(true)
   setCurrentServer(4)

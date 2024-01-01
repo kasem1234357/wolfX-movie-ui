@@ -2,8 +2,9 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { fetchUrl } from '../controlls/FetshingUrl'
+import { fetchUrl } from '../utils/FetshingUrl'
 import { useNavigate } from 'react-router-dom'
+import ActorBox from './Boxes/ActorBox/ActorBox'
 
 const Actors = ({name,id}) => {
   const navigate = useNavigate()
@@ -17,9 +18,7 @@ const Actors = ({name,id}) => {
   return (
    <div className='flex center fw-row' style={{gap:"10px"}}  >
      { data?.map((actor)=>(
-    <div className='actorBox' >
-     <img src={`https://image.tmdb.org/t/p/original${actor?.profile_path} `} alt="" srcset=""/>
-     {actor.name}</div>
+    <ActorBox  actor={actor}/>
    ))}
    </div>
   

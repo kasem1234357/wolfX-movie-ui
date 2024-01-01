@@ -1,7 +1,7 @@
-import {addMovie, deleteMovies} from '../utils/movies'
+import {addMovie, deleteMovies} from '../redux/slices/movieSlice'
 
 import axios from 'axios'
-import { handleClick } from './notificationConfig'
+import { handleClick } from '../configs/notificationConfig'
 
 export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies,setLoading})=>{
   setLoading(true)

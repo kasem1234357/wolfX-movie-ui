@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 // import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import FormInput from '../controlls/FormInput';
-import { handleClick } from '../utils/notificationConfig';
-import { addUser } from '../utils/users';
+import FormInput from '../components/custom/FormInput';
+import { handleClick } from '../configs/notificationConfig';
+import { addUser } from '../redux/slices/userSlice';
 // import { contextData } from '../dataBase/context';
 import { schema } from '../utils/validateSchema';
+import { register } from '../utils/registerFn';
 function Register() {
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   // const {setUserData} = useContext(contextData)
   const [values, setValues] = useState({
@@ -18,43 +19,12 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      console.log({
-        userName:values.userName,
-        email:values.email,
-        password:values.password
-      });
-      axios.post('https://wolfxmovie2.onrender.com/api/auth/register',{
-        userName:values.userName,
-        email:values.email,
-        password:values.password
-      }).then(responce => {
-        handleClick({type:"success",msg:"user added"})
-        dispatch(addUser(responce.data))
-        console.log(responce.data)
-       Navigate('/')
-      }).catch(error =>{
-        if(error.response){ 
-          handleClick({type:"error",msg:error.response.data.error})
-        };
-        
-      })
-    } catch (error) {
-      handleClick({type:"error",msg:"something going wrong try again later"})
-      console.log(error);
-    }
-   
-  };
-
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   return (
     <div className="form-box2 bg-gray flex f-column padding">
-    <form className='bg-gray flex f-column flow text-white' onSubmit={handleSubmit}>
+    <form className='bg-gray flex f-column flow text-white' onSubmit={(e)=>{register(e,values,{navigate,dispatch})}}>
       
       {schema(values).signUp.map(input=>{
 

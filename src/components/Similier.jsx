@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import ScrollBox from '../controlls/ScrollBox'
-import Loading from './Loading';
-import {fetchUrl} from '../controlls/FetshingUrl'
+import ScrollBox from './Boxes/ScrollBox/ScrollBox'
+import Loading from './custom/Loading';
+import {fetchUrl} from '../utils/FetshingUrl'
 function Similier({typeId,name}) {
  const [data,setData]=useState([]);
  const [loading,setLoading] = useState(true)

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { lazy } from 'react'
-import Loading from '../components/Loading'
-const ToastBox = lazy(()=>import("../components/ToastBox"))
+import Loading from '../components/custom/Loading'
+const ToastBox = lazy(()=>import("../components/Boxes/ToastBox/ToastBox"))
 function Notification() {
   return (
     <Suspense fallback={<Loading/>}>

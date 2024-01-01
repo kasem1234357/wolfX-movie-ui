@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import MoviesBox from '../components/sm-components/MoviesBox'
+import MoviesBox from '../components/Boxes/MovieBox/MoviesBox'
 
 function Faviorate() {
  

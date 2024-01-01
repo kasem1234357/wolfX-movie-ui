@@ -2,16 +2,18 @@ import axios from 'axios'
 import React, { useState } from 'react'
 // import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import FormInput from '../controlls/FormInput'
+import FormInput from '../components/custom/FormInput'
 // import { contextData } from '../dataBase/context'
 import {schema} from '../utils/validateSchema'
 import {useDispatch, useSelector} from "react-redux"
-import './form.css'
-import { getStatus, logUser } from '../utils/users'
+import '../styles/form.css'
+import { getStatus } from '../redux/slices/userSlice'
 import { useEffect } from 'react'
+import { logUser } from '../redux/actions/auth'
 function Login() {
   const Navigate = useNavigate()
   const dispatch = useDispatch();
+
   const status = useSelector(getStatus)
   // const {setUserData} = useContext(contextData)
   const [values,setValues]=useState({

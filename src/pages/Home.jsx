@@ -1,12 +1,9 @@
 import React, {  useState } from 'react'
 import { lazy } from 'react';
 
-import Feed from '../components/Feed/Feed';
-import '../index.css';
-// import PopUp from '../components/PopUp/PopUp';
-
-const RightBar = lazy(()=>import('../components/RightBar/RightBar'))
-// import { contextData } from '../dataBase/context';
+import Feed from '../components/layouts/Feed/Feed';
+import '../styles/index.css';
+const RightBar = lazy(()=>import('../components/layouts/RightBar/RightBar'))
 
 function Home() {
   const[active,setActive]= useState(false);

@@ -1,0 +1,70 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.rightBarContainer{
+  max-width: 310px;
+  max-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.account-detials{
+  --gap:0;
+}
+.account-detials h3{
+ line-height: 2;
+}
+.account-detials p{
+  font-size: 14px;
+}
+.account-detials h3{
+ line-height: 2;
+}
+.account{
+ gap: 1rem;
+  position: relative;
+ padding-bottom:0px;
+}
+.filter-items{
+ --gap:0.8rem
+}
+.sign-btn{
+  background: /*#b31c25*/#22262a ;
+  cursor: pointer;
+    border: none;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: hsl(var(--clr-white));
+    padding: 10px 15px 10px 15px;
+    font-size: 16px;
+}
+.sign-btn span{
+  padding-left: 5px;
+  color: #edf1f5;
+}
+.pages-box.flex.flex-between.fw-row {
+  --gap: 10px;
+}
+.pages-box .page-router {
+  padding: 10px;
+  background: #22262a;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+.pages-box > div a {
+  color: #fff;
+}
+.pages-box .active-page{
+  background: hsl(var(--clr-main)/.75);
+}
