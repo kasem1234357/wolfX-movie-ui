@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function FilterSelect({setCurrentSelect,filterApi,filterData,setActiveFilter,activeFilter,setFilterData}) {
+function FilterSelect({setCurrentSelect,filterApi,filterData,setActiveFilter,activeFilter,setFilterData,currentSelect}) {
     const navigate = useNavigate();
   return (
     <div className={`advanced-filter-mobile ${activeFilter?"active-mobile-filter":""}`}>

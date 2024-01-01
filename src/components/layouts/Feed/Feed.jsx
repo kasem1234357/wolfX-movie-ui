@@ -90,7 +90,7 @@ const Feed =memo(({active,setActive}) => {
      {/*================================================*/}
      
     </div>
-    <FilterSelect filterApi={filterApi} filterData={filterData} setActiveFilter={setActiveFilter} setCurrentSelect={setCurrentSelect} activeFilter={activeFilter} setFilterData={setFilterData}/>
+    <FilterSelect filterApi={filterApi} filterData={filterData} setActiveFilter={setActiveFilter} setCurrentSelect={setCurrentSelect} activeFilter={activeFilter} setFilterData={setFilterData} currentSelect={currentSelect}/>
 {/*============= url to the the mian pages==============================*/ }
           
         </nav>
