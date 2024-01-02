@@ -2,7 +2,11 @@ import React, {  useState } from 'react'
 import { lazy } from 'react';
 
 import Feed from '../components/layouts/Feed/Feed';
+import '../styles/template.css';
 import '../styles/index.css';
+import '../styles/custom.css';
+import '../styles/moviesBox.css';
+import '../styles/media.css';
 const RightBar = lazy(()=>import('../components/layouts/RightBar/RightBar'))
 
 function Home() {

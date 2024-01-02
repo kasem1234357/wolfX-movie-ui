@@ -4,7 +4,6 @@
 * Autoprefixer: v10.4.7
 * Browsers: last 4 version
 */
-
 .feed{
   -ms-grid-rows: -webkit-min-content 1fr;
   -ms-grid-rows: min-content 1fr;

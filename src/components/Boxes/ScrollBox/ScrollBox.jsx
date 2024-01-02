@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import MoviesBox from '../MovieBox/MoviesBox'
+import '../../../styles/scrollBox.css'
 function ScrollBox(props) {
  const [pressed, setPressed] = useState(false);
  const [stopPoint,setStopPoint]=useState(null)

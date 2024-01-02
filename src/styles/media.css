@@ -1,0 +1,115 @@
+@media (max-width: 45em) {
+    .flex-box {
+      -webkit-transition: -webkit-transform 0.5s;
+      transition: -webkit-transform 0.5s;
+      -o-transition: transform 0.5s;
+      transition: transform 0.5s;
+      transition: transform 0.5s, -webkit-transform 0.5s;
+      width: 300px;
+      inset: 0;
+      right: 0;
+      left: auto;
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%);
+      position: absolute;
+    }
+    .mobile-search {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    .large-movie,
+    .meduim-movie {
+      min-width: 268px;
+    }
+    .flex-box.active {
+      -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+      transform: translateX(0);
+    }
+    .toast {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+    .toast-box {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+    .toast-content.flow {
+      /* align-items: center; */
+      /* justify-content: center; */
+      display: -ms-grid;
+      display: grid;
+      place-items: center;
+    }
+    .toast-text {
+      text-align: center;
+    }
+    .toast-text p {
+      width: 100%;
+    }
+    .toas-time {
+      font-size: 16px;
+      text-align: center;
+    }
+    .sm-toast_time-update {
+      background: #ed6e7a;
+    }
+    .sm-toast_time-account {
+      background: #4175df;
+    }
+    .sm-toast_time-security {
+      background: hsl(var(--clr-main));
+    }
+    .details-movie {
+      max-width: 100vw;
+    }
+  
+    .nav-box {
+      padding-bottom: 10px;
+    }
+    .filter-hight {
+      height: 72px;
+    }
+    .filter-btn-box[name="more-items"] {
+      display: none;
+    }
+  }
+  @media (min-width: 45.1rem) {
+    .flex-box.navigation {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      min-width: 300px;
+    }
+    .details-movie {
+      max-width: 48vw;
+    }
+    .flex-box,
+    .flex-box.active {
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      width: 0;
+      min-width: 0px;
+      -webkit-box-flex: 0;
+      -ms-flex: 0;
+      flex: 0;
+    }
+    .flex-box.active .arrow {
+      -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+      transform: scale(0);
+      width: 0;
+    }
+    .mobile-search,
+    .mobile-filter,
+    .advanced-filter-mobile {
+      display: none;
+    }
+  }
