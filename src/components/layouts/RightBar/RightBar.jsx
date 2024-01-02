@@ -12,14 +12,39 @@ import { Close } from '../../icons/svgIcon';
 import FilterBox from '../../Boxes/filterBox/FilterBox'
 import { useState } from 'react'
 import { filterApi } from '../../Boxes/filterBox/FilterApi'
+import {filter} from '../../../utils/filterNavigate'
 const RightBar = memo(({active,setActive}) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeFilter,setActiveFilter]=useState(false)
-  const [filterID,setFilterID]=useState(null)
+  const [filterID,setFilterID]=useState({})
   const user = useSelector(state => state.users.user)
   const status = useSelector(state => state.users.status)
   const url = window.location.pathname.slice(window.location.pathname.lastIndexOf("/")+1)
+
+
+
+  // const NavigateFn = (updatedId)=>{
+  //   if(window.location.pathname === ('/explore/tv')){
+      
+  //     navigate("explore/tv",{ state: { dataType: 'filtershowsByType',filter:updatedId?.tvId || ''  } })
+      
+  //    }else{
+  //     navigate("explore/movie",{ state: { dataType: 'explore',filter:updatedId?.movieId || '' } })
+  //    }
+     
+  // }
+  // const filter = (idItem)=>{
+  //   console.log(idItem);
+  //   const updatedId = filterID?.id ===idItem?{}:filterApi.type.find(({ id }) =>id === idItem)
+  //    setFilterID((prev)=>prev?.id === idItem?{}:filterApi.type.find(({id }) =>id === idItem))
+  //     dispatch(searchUpdate("") )
+  //     NavigateFn(updatedId)
+  //     console.log(updatedId);
+   
+  // }
+
   return (
     <div className="flex rightBarContainer">
       {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}
@@ -87,18 +112,9 @@ const RightBar = memo(({active,setActive}) => {
      </div> */}
      
      {filterApi.type.slice(0,6).map(({id,name})=>(
-       <FilterBtn active={filterID ===id?"true":"false"} key={id} name={name} value={id} onClick={()=>{
-        const updatedId = filterID ===id?"":id
-        setFilterID((prev)=>prev === id?"":id)
-        dispatch(searchUpdate("") )
-       if(window.location.pathname === ('/explore/tv')){
-          navigate("explore/tv",{ state: { dataType: 'filtershowsByType',filter:updatedId  } })
-          
-         }else{
-          navigate("explore/movie",{ state: { dataType: 'explore',filter:updatedId  } })
-         }
-         setActive(!active)
-       }}/>
+       <FilterBtn  active={filterID?.id ===id?true:false} key={id} name={name} onClick={()=>{
+         filter({ filterID, idItem:id,active },{setFilterID,dispatch,navigate,setActive})
+       }}  />
      ))}
      <FilterBtn name='more-items' style={{flex:'2',}} onClick={()=>setActiveFilter(true)}/>
      

@@ -52,12 +52,13 @@ const fetchData =useCallback( (pageNumber,dataStore) => {
  
 },[dataType,name,query,filter])
 useEffect(()=>{
+  console.log(filter);
    setData([])
    setPage(1);
    fetchData(1,[]);
    
    
-},[name,query,fetchData]);
+},[name,query,fetchData,filter]);
 
 useEffect(()=>{
   if(data !== [] && data.length > 10){

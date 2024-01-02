@@ -28,29 +28,29 @@ function FilterBox({ setActiveFilter, setActive }) {
             <h3>Type</h3>
           </div>
           <div className="filter-item-box flex flex-between fw-row">
-            {filterApi.type.map(({ id, name }, index) => (
+            {filterApi.type.map((item, index) => (
               <div
                 className={`popUp-filter  
                            ${
-                             filterOptions.dataType.some((data) => data === id)
+                             filterOptions.dataType.some((data) => data.id === item.id)
                                ? "active-popUp"
                                : "bg-white"
                            } `}
                 key={index}
                 onClick={() => {
-                  filterOptions.dataType.some((data) => data === id)
+                  filterOptions.dataType.some((data) => data.id === item.id)
                     ? SetFilterOptions((prev) => {
                         return {
                           ...prev,
-                          dataType: prev.dataType.filter((data) => data !== id),
+                          dataType: prev.dataType.filter((data) => data.id !== item.id),
                         };
                       })
                     : SetFilterOptions((prev) => {
-                        return { ...prev, dataType: [...prev.dataType, id] };
+                        return { ...prev, dataType: [...prev.dataType, item] };
                       });
                 }}
               >
-                {name}
+                {item.name}
               </div>
             ))}
           </div>
@@ -149,20 +149,22 @@ function FilterBox({ setActiveFilter, setActive }) {
             setActiveFilter(false);
             console.log(filterOptions);
             if (window.location.pathname === "/explore/tv") {
+              const filters = filterOptions.dataType.map(item =>item.tvId)
               navigate("explore/tv", {
                 state: {
                   dataType: "filtershowsByType",
                   years: filterOptions.years,
-                  filter: filterOptions.dataType,
+                  filter: filters,
                   origin: filterOptions.country,
                 },
               });
             } else {
+              const filters = filterOptions.dataType.map(item =>item.movieId)
               navigate("explore/movie", {
                 state: {
                   dataType: "filtershowsByType",
                   years: filterOptions.years,
-                  filter: filterOptions.dataType,
+                  filter:filters,
                   origin: filterOptions.country,
                 },
               });
