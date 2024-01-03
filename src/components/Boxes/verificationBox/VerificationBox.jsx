@@ -6,15 +6,22 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { startVerifiedOperation } from '../../../utils/startVerfiedOperation';
 import { handleClick } from '../../../configs/notificationConfig';
+import { useNavigate } from 'react-router-dom';
 
 function VerificationBox() {
   const userId = useSelector(state => state.users?.user?._id)
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [value,setValue]=useState([])
   const sendCode = ()=>{
     axios.post('https://wolfxmovie2.onrender.com/api/auth/set-verified',{
        userId,
        code :value.join('')
+      }).then(res =>{
+        navigate('/')
+        handleClick({type:"success",msg:"code sended successifly"})
+      }).catch(err =>{
+         handleClick({type:"error",msg:"some thing going wrong"})
       })
   }
   return (

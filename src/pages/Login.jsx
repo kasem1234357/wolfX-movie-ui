@@ -26,6 +26,7 @@ function Login() {
   }
   const handleSubmit2 = (e)=>{
     e.preventDefault();
+    console.log(values);
     dispatch(logUser(values)) 
   }
   useEffect(()=>{

@@ -2,7 +2,7 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
 import observable from '../../../utils/notification';
 
-const LOG_URL ="https://wolfxmovie2.onrender.com/auth/login"
+const LOG_URL ="https://wolfxmovie2.onrender.com/api/auth/login"
 const GET_USER = "https://wolfxmovie2.onrender.com/api/users/"
 export const logUser = createAsyncThunk('user/checkUser', async (initialUser) => {
  const response = await axios.post(LOG_URL, initialUser)
