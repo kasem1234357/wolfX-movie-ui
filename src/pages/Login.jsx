@@ -52,8 +52,9 @@ return <FormInput key={input.id} {...input} value={values[input.name]} onChange=
      
      <p className='text-main'>forget password</p>
      </div>
-     <input className='submit ' type="submit" value={
-      status === "loading"?<span className='loaderX3'></span>:'Login Now'} />
+     {status === 'loading'? <span className='loaderX2'></span> : <input className='submit ' type="submit" value={
+      status === "loading"?"":'Login Now'} />}
+    
    </form>
    </div>
   )

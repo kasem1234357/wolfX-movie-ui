@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../components/custom/FormInput';
 import { handleClick } from '../configs/notificationConfig';
-import { addUser } from '../redux/slices/userSlice';
+import { addUser, getStatus } from '../redux/slices/userSlice';
 // import { contextData } from '../dataBase/context';
 import { schema } from '../utils/validateSchema';
 import { register } from '../utils/registerFn';
 function Register() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const status = useSelector(getStatus)
   // const {setUserData} = useContext(contextData)
   const [values, setValues] = useState({
     userName: "",
@@ -46,7 +47,8 @@ function Register() {
       
       
       </div>
-      <input className='submit ' type="submit" value={'Login Now'} />
+      {status === 'loading'? <span className='loaderX2'></span> : <input className='submit ' type="submit" value={
+      status === "loading"?"":'Login Now'} />}
     </form>
     </div>
   )
