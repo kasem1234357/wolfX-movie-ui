@@ -3,14 +3,16 @@ import React, { useState, useRef } from 'react';
 import '../../../styles/verificationBox.css';
 import VerificationInput from './VerificationInput';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startVerifiedOperation } from '../../../utils/startVerfiedOperation';
 import { handleClick } from '../../../configs/notificationConfig';
 import { useNavigate } from 'react-router-dom';
+import { verifiedUser } from '../../../redux/slices/userSlice';
 
 function VerificationBox() {
   const userId = useSelector(state => state.users?.user?._id)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [value,setValue]=useState([])
   const sendCode = ()=>{
@@ -18,7 +20,9 @@ function VerificationBox() {
        userId,
        code :value.join('')
       }).then(res =>{
+        dispatch(verifiedUser())
         navigate('/')
+
         handleClick({type:"success",msg:"code sended successifly"})
       }).catch(err =>{
          handleClick({type:"error",msg:"some thing going wrong"})

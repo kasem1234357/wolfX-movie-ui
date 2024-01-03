@@ -3,5 +3,9 @@ export const user_layout_actions ={
         state.status = "succeeded"
         state.user = action.payload
         localStorage.setItem('user', JSON.stringify(action.payload._id));
+    },
+    verifiedUser:(state,action)=>{
+        state.status = "succeeded"
+        state.user.verified = true
     }
 }

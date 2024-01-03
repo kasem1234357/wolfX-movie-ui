@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Login from './Login'
 import Register from './Register'
+
 import { useLocation } from 'react-router-dom'
 import VerificationBox from '../components/Boxes/verificationBox/VerificationBox'
 function Account() {
