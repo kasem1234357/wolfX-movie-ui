@@ -34,7 +34,10 @@ function Main() {
     return <Loading/>
   }
   return (
-   <div className=" feed-list grid scroll-y padding hidden-x"  >
+    <>
+    
+    <div className=" feed-list grid scroll-y padding hidden-x"  >
+   
    <div className='flex flex-between ' style={{paddingTop:'10px',maxWidth:'98vw'}}>
      <h3 className='text-white'>Trending Movies</h3>
      <p className='text-gray flex center' ><Link to="/explore/movie">see All</Link><Arrow/></p>
@@ -51,6 +54,9 @@ function Main() {
    </div>
    <ScrollBox style={{ minHeight: "270px",position:'relative'}} data={data3.rated}type={'small-movie'}/>
 </div>
+    </>
+
+   
   )
 }
 

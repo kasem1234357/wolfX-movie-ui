@@ -271,3 +271,14 @@
      -o-transition-property: height;
      transition-property: height;
  }
+ .not-verified{
+  height: 50px;
+  background: #b2161d;
+ }
+ .verified-link {
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #e3b382;
+    font-weight: bold;
+ }

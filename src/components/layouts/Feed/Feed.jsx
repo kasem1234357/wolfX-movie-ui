@@ -4,14 +4,17 @@ import { Link,  Outlet, useNavigate,  } from 'react-router-dom';
 import { Apps, BookMark, Filter,Notifications } from '../../icons/svgIcon';
 import {searchUpdate} from '../../../redux/slices/movieSlice'
 import { filterApi } from '../../Boxes/filterBox/FilterApi'
-import {useDispatch}from 'react-redux'
+import {useDispatch, useSelector}from 'react-redux'
 import './feed.css'
 import { useState } from 'react';
 import { useRef } from 'react';
 import MobileFilterItem from '../../custom/MobileFilterItem';
 import FilterSelect from '../../custom/FilterSelect';
+import { startVerifiedOperation } from '../../../utils/startVerfiedOperation';
+import { handleClick } from '../../../configs/notificationConfig';
 const Feed =memo(({active,setActive}) => {
    const[activeSearch,setActiveSearch]=useState(false)
+   const user = useSelector(state => state.users?.user)
    const[activeFilter,setActiveFilter]=useState(false)
    const[currentSelect,setCurrentSelect]=useState("");
    const[filterData,setFilterData]= useState({
@@ -92,8 +95,23 @@ const Feed =memo(({active,setActive}) => {
     </div>
     <FilterSelect filterApi={filterApi} filterData={filterData} setActiveFilter={setActiveFilter} setCurrentSelect={setCurrentSelect} activeFilter={activeFilter} setFilterData={setFilterData} currentSelect={currentSelect}/>
 {/*============= url to the the mian pages==============================*/ }
-          
         </nav>
+        {user?._id && !user?.verified &&<div className='not-verified fill  flex center text-white'>
+       you are not verified verified your account <span onClick={()=>{
+         navigate('/account',{ state: { type: 'verification' } })
+         startVerifiedOperation(user?._id,[
+            {
+               callback:handleClick,
+               arg:[{type:"success",msg:"code sended successifly"}]
+            }
+         ],[
+            {
+               callback:handleClick,
+               arg:[{type:"error",msg:"some thing going wrong"}]
+            }
+         ])
+       }} className='verified-link '> here</span>
+    </div>}
    <Outlet/>
   </div>
   )
