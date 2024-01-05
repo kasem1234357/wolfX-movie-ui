@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import FilterBtn from '../../custom/FilterBtn'
 // import { data } from '../../dataBase/fakeData';
 // import MoviesBox from '../sm-components/MoviesBox'
@@ -22,7 +22,7 @@ const RightBar = memo(({active,setActive}) => {
   const user = useSelector(state => state.users.user)
   const status = useSelector(state => state.users.status)
   const url = window.location.pathname.slice(window.location.pathname.lastIndexOf("/")+1)
-
+  const inputRef = useRef("")
 
 
   // const NavigateFn = (updatedId)=>{
@@ -77,13 +77,19 @@ const RightBar = memo(({active,setActive}) => {
  <div className="arrow " style={{cursor: 'pointer'}}><Close width={'40px'} onClick={()=>setActive(!active)}/></div></div>
    <div className="filter flex-items padding flow ">
     <div className="pages-box flex flex-between fw-row">
-      <div className={`flex-items page-router ${url ==="movie"?"active-page":""}`}><Link to='/explore/movie'>Movies</Link></div>
-      <div className={`flex-items page-router ${url ==="tv"?"active-page":""}`}> <Link to='/explore/tv'>Shows</Link></div>
-      <div className={`flex-items page-router ${url ==="exploreActors"?"active-page":""}`}><Link to='exploreActors'>Actors</Link></div>
+      <div className={`flex-items page-router ${url ==="movie"?"active-page":""}`}><Link to='/explore/movie' onClick={()=>{
+        inputRef.current.value = ""
+     }}>Movies</Link></div>
+      <div className={`flex-items page-router ${url ==="tv"?"active-page":""}`}> <Link to='/explore/tv' onClick={()=>{
+        inputRef.current.value = ""
+     }}>Shows</Link></div>
+      <div className={`flex-items page-router ${url ==="exploreActors"?"active-page":""}`}><Link to='exploreActors' onClick={()=>{
+        inputRef.current.value = ""
+     }}>Actors</Link></div>
     </div>
     <div className="search bg-dark flex center text-gray">
      <img className="" src={search}alt=""  />
-     <input className='Search-input' type="search" name="" id="" onInput={(e)=>{
+     <input ref={inputRef} className='Search-input' type="search" name="" id="" onInput={(e)=>{
        if(window.location.pathname === ('/explore/tv')){
         navigate("explore/tv",{ state: { dataType: 'search' } })
        }else if(window.location.pathname === ('/exploreActors')){

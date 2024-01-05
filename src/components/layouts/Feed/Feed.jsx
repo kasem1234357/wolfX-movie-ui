@@ -45,8 +45,10 @@ const Feed =memo(({active,setActive}) => {
      <input ref={inputRef} className={`Search-input`} type="search" name="" id="" onInput={(e)=>{
        if(window.location.pathname === ('/explore/tv')){
         navigate("explore/tv",{ state: { dataType: 'search' } })
-       }else{
+       }else if(window.location.pathname === ('/explore/movie')){
         navigate("explore/movie",{ state: { dataType: 'search'} })
+       }else{
+         navigate("exploreActors",{ state: { dataType: 'searchByActor'} })
        }
        if(e.target.value === ''){
         navigate(window.location.pathname,{ state: { dataType: 'explore',filter:"" } })
@@ -86,7 +88,9 @@ const Feed =memo(({active,setActive}) => {
         inputRef.current.value = ""
      }}>Shows</Link></div>:""}
 
-     {(!activeFilter )?<div className={`flex  mobile-filter-item ${url ==="Actors"&&"active-page"}`}>Actors</div>:""}
+     {(!activeFilter || window.location.pathname === '/exploreActors' )?<div className={`flex  mobile-filter-item ${url ==="Actors"&&"active-page"}`}><Link to='/exploreActors' onClick={()=>{
+        inputRef.current.value = ""
+     }}>Actors</Link></div>:""}
      {/*================================================*/}
      <MobileFilterItem activeFilter={activeFilter} filterData={filterData} setFilterData={setFilterData}/>
 
