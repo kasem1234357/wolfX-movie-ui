@@ -322,3 +322,32 @@ select::-ms-expand {
 .checked {
   background: #52b788 !important;
 }
+.download-link-btn{
+  position: relative;
+}
+.download-info-popup{
+  position: absolute;
+  display: none;
+
+}
+.download-info-popup::before{
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: green;
+  position: absolute;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-60%) rotate(45deg);
+  bottom: -10px;
+  background-color: hsl(var(--clr-gray));
+}
+.download-link-btn:hover .download-info-popup {
+  display: flex;
+  padding: 5px;
+  text-align: left;
+  top: -300%;
+  width: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -2,6 +2,7 @@ import {addMovie, deleteMovies} from '../redux/slices/movieSlice'
 
 import axios from 'axios'
 import { handleClick } from '../configs/notificationConfig'
+import { useDispatch } from 'react-redux'
 
 export const ToggleMovies = ({user,data,dispatch,setCheck,name,movies,setLoading})=>{
   setLoading(true)

@@ -23,28 +23,6 @@ const RightBar = memo(({active,setActive}) => {
   const status = useSelector(state => state.users.status)
   const url = window.location.pathname.slice(window.location.pathname.lastIndexOf("/")+1)
   const inputRef = useRef("")
-
-
-  // const NavigateFn = (updatedId)=>{
-  //   if(window.location.pathname === ('/explore/tv')){
-      
-  //     navigate("explore/tv",{ state: { dataType: 'filtershowsByType',filter:updatedId?.tvId || ''  } })
-      
-  //    }else{
-  //     navigate("explore/movie",{ state: { dataType: 'explore',filter:updatedId?.movieId || '' } })
-  //    }
-     
-  // }
-  // const filter = (idItem)=>{
-  //   console.log(idItem);
-  //   const updatedId = filterID?.id ===idItem?{}:filterApi.type.find(({ id }) =>id === idItem)
-  //    setFilterID((prev)=>prev?.id === idItem?{}:filterApi.type.find(({id }) =>id === idItem))
-  //     dispatch(searchUpdate("") )
-  //     NavigateFn(updatedId)
-  //     console.log(updatedId);
-   
-  // }
-
   return (
     <div className="flex rightBarContainer">
       {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}

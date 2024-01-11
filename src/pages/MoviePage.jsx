@@ -24,14 +24,14 @@ const target =(target)=>{
    window.open(`https://autoembed.to/movie/imdb/${target}?server=1&ss=2`)
    }
 const contentLoad =(n)=>{
-  
+  const youtubeKey = data3?.all?.videos?.results?.filter(item => item.site ==="YouTube" && item.type === "Trailer")[0]?.key || ''
   switch (n) {
     case 1:
       return <Details data3={data3} target={target} name={name} showId={idMovie}/>
 
       case 2:
         
-        return <Embeded  id={data3.all.imdb_id || data3.all.id} name={name}/>
+        return <Embeded data={data3.all} id={youtubeKey}/>
       case 3:
         return <Actors name={name} id={data3.all.imdb_id || data3.all.id}/>
      case 4:
@@ -44,8 +44,6 @@ const contentLoad =(n)=>{
 }
 const typeId = idMovie
 const name =  nameData
-
-
 
  useEffect(()=>{
    try {

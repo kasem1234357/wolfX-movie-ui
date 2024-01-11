@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import WarningPopup from "./Boxes/WarningBox/WarningPopup";
 import Spiner from "./custom/Spiner";
+import axios from "axios";
 function Details({ data3, target, name,showId }) {
   const [checkData, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingDownload,setLoadingDownload]=useState(true);
   const nvigate = useNavigate();
   const user = useSelector((state) => state.users.user);
   const status = useSelector((state) => state.users.status);
   const [activeWarning, setActiveWarning] = useState(false);
   const movies = useSelector((state) => state.movies.data);
+  const [dt,setDt]=useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const year =
@@ -33,7 +36,19 @@ function Details({ data3, target, name,showId }) {
       setCheck(movies?.some((mv) => mv.id === data3.all.id));
     }
   }, [movies, data3, name]);
-
+useEffect(()=>{
+  axios.post('http://localhost:8800/get-links',{
+    name:nameDW,
+    year:year
+   }).then(res =>{
+    setDt(res.data)
+    console.log(res.data);
+    setLoadingDownload(false)
+   }).catch(err =>{
+    console.log(err)
+    setLoadingDownload(false);
+   })
+},[nameDW,year,type])
   return (
     <div>
       {activeWarning ? (
@@ -91,11 +106,23 @@ function Details({ data3, target, name,showId }) {
             watch Now
           </span>
         )}
-        <span className="add flex center" style={{ marginRight: "7px" }}>
-          <Link to="/download" state={{ type: type, year: year, name: nameDW }}>
-            <Download width={"15px"} />
-          </Link>
+        
+        <span className="download-link-btn">
+        
+        {loadingDownload?<>
+          <span className="download-info-popup bg-gray">
+          <p>download link will take time to generate between 10s to 30s</p>
         </span>
+          <Spiner/>
+        </>:
+        <span className="add flex center" style={{ marginRight: "7px" }} >
+        <Link to="/download" state={{ type: type, year: year, name: nameDW,dt:dt }}>
+          <Download width={"15px"} />
+        </Link>
+      </span>}
+        </span>
+        
+        
         {
           loading?<Spiner type="X"/>:
           <span
