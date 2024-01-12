@@ -37,7 +37,7 @@ function Details({ data3, target, name,showId }) {
     }
   }, [movies, data3, name]);
 useEffect(()=>{
-  axios.post('http://localhost:8800/get-links',{
+  axios.post('https://download-url-generator.onrender.com/get-links',{
     name:nameDW,
     year:year
    }).then(res =>{
