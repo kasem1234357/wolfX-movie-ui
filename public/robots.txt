@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://midnightx.vercel.app/sitemap.xml
+Sitemap: 'https://wolfxmovie2.onrender.com/api/seo/site_map'
