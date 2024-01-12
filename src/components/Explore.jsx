@@ -8,6 +8,7 @@ import {fetchUrl} from '../utils/FetshingUrl'
 import { useMemo } from 'react';
 import { useCallback } from 'react';
 import { lazy } from 'react';
+import { Helmet } from 'react-helmet';
 const MoviesBox = lazy(()=> import("./Boxes/MovieBox/MoviesBox"))
 function Explore() {
   const location = useLocation()
@@ -71,6 +72,14 @@ useEffect(()=>{
 },[callbackFunction,opt]);
 
   return (
+    <>
+    <Helmet>
+        <title>
+        midnightX app
+        </title>
+        <meta name="description" content="explore the newest movies and tv shows "/>
+        <meta name='keywords' content={`movie, film, watch online, download, HD movies, new releases, cinematic experience, movie streaming, entertainment,`} />
+      </Helmet>
     <Suspense fallback={<Loading/>}>
        <div className='flex  fw-row' style={{justifyContent:'space-around',alignItems:'center'}}>
      {data.map(boxData=>{
@@ -82,7 +91,7 @@ useEffect(()=>{
      
     </div>
     </Suspense>
-   
+    </>
   )
 }
 

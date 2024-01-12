@@ -10,6 +10,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import Watch from "./pages/Watch";
 import ActorMovies from "./pages/ActorMovies";
+import { Helmet } from "react-helmet";
 const Account = lazy(()=> import('./pages/Account'))
 const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
@@ -27,7 +28,14 @@ function App() {
    },[status,user])
   return(
     <>
+     <Helmet>
+        <title>
+          midnightX app
+        </title>
+        <meta name="description" content="Explore a world of entertainment on midnightX. Watch and download a vast collection of movies and TV shows in high quality. From timeless classics to the latest releases, midnightX is your go-to destination for cinematic pleasure. Start streaming now!"/>
+      </Helmet>
     <Suspense fallback={<Loading/>}>
+     
     <Routes>
         <Route path="/" element={<Home />} >
          <Route path="" element={<Main />}/>

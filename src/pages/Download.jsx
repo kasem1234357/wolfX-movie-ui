@@ -1,9 +1,9 @@
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Spiner from '../components/custom/Spiner';
 import Loading from '../components/custom/Loading';
+import { Helmet } from 'react-helmet';
 
 const Download = () => {
    const location = useLocation();
@@ -27,16 +27,14 @@ const Download = () => {
   //     setLoading(false);
   //    })
   //  },[name,year,type])
-  
   return (
     <>
-    {loading?<>
-    <div>
-    <p className='text-white bold' style={{textAlign:'center'}}>my dear user the download link will take time to generate between 10s to 30s please wait</p>
-    <Loading />
-    </div>
+     <Helmet>
+        <title>
+        {name}
+        </title>
+      </Helmet>
     
-    </>:
     <div>
       {dt?.map(el =>(
        <div className="direct-section">
@@ -50,7 +48,7 @@ const Download = () => {
     
     
   </div>
-    }
+    
     
     
     </>

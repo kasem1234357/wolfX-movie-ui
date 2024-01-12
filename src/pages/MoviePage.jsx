@@ -9,6 +9,7 @@ import Embeded from '../components/custom/Embeded';
 import Similier from '../components/Similier';
 import Epsoides from '../components/Epsoides';
 import Actors from '../components/Actors';
+import { Helmet } from 'react-helmet';
 
 function MoviePage() {
   const [tab,setTab]= useState(1);
@@ -65,6 +66,17 @@ if(loading){
 }
   return (
     <>
+     <Helmet>
+        <title>
+        {data3.all.name ||
+    data3.all
+      .title}
+        </title>
+        <meta name="description" content="watch your favorate show or downloaded free and get info for free with us "/>
+        <meta name='keywords' content={`movie, film, watch online, download, HD movies, new releases, cinematic experience, movie streaming, entertainment,${data3.all.name ||
+    data3.all
+      .title} `} />
+      </Helmet>
     <div className='flex fill fw-row' style={{position:"relative"}}>
     <div className="blur-back" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${data3?.all?.backdrop_path})`}}></div>
       <div className="opacity-front"></div>
