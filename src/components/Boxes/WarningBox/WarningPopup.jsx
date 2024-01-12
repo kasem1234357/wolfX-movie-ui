@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Warning } from '../../icons/svgIcon'
 import { sendReports } from '../../../utils/sendReports'
 import useMultiSelect from '../../../hooks/useMultiSelect'
+import { useSelector } from 'react-redux'
+import { handleClick } from '../../../configs/notificationConfig'
 const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
   const [items,setItems]= useState([
     {
@@ -27,6 +29,7 @@ const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
     },
   ])
   const [isLoading,setIsLoading]= useState(false)
+  const verified = useSelector(state => state.users.user.verified)
   const textAreaRef = useRef('')
   const {addItem,removeItem,selectors,searchForItem} = useMultiSelect()
   return (
@@ -59,13 +62,18 @@ const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
       setActiveWarning(false)
     }}>exit</button>
     {!isLoading?<button onClick={()=>{
-      sendReports(userId,{
-        type,
-        showName,
-        problemType:selectors,
-        showId,
-        userMsg:textAreaRef?.current.value
-      },setIsLoading)
+      if(verified){
+        sendReports(userId,{
+          type,
+          showName,
+          problemType:selectors,
+          showId,
+          userMsg:textAreaRef?.current.value
+        },setIsLoading)
+        handleClick({type:"success",msg:"your report send successfily"})
+      }else{
+        handleClick({type:"error",msg:"you are not verified"})
+      }
       setActiveWarning(false)
     }}>send</button>: <span className="loaderX" >
 
