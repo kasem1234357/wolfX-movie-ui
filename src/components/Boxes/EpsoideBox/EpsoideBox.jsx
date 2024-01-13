@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Download, Rating } from "../../icons/svgIcon";
+import { useState } from "react";
+import axios from "axios";
+import Spiner from "../../custom/Spiner";
 function MoviesBox({
   boxStyle,
   data,
