@@ -24,6 +24,7 @@ function MoviesBox({
       );
     }
   }
+  const navigate = useNavigate();
   const [loading,setLoading] = useState(false)
   const [dt,setDt]=useState([]);
   const generateDownload = ()=>{
@@ -36,14 +37,14 @@ function MoviesBox({
         setDt(res.data)
         console.log(res.data);
         setLoading(false)
-        navigate('/download',{state:{ type: type, year: year, name: name,dt:res.data }})
+        navigate('/download',{state:{   name: name,dt:res.data }})
        }).catch(err =>{
         console.log(err)
         setLoading(false);
        })
 
   }
-  const navigate = useNavigate();
+
   // const target =()=>{
   //   window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}`)
   //   }
@@ -73,11 +74,21 @@ function MoviesBox({
             </div>
           </div>
           <div className="flex center">
-            <span className="add flex center">
+            <span className="download-link-btn">
+             
+
+            {loading?<>
+          <span className="download-info-popup bg-gray">
+          <p>download link will take time to generate between 10s to 30s</p>
+        </span>
+          <Spiner/>
+        </>:<span className="add flex center">
               <Download onClick={()=>{
                  generateDownload()
               }} width={"15px"} />
+            </span>}
             </span>
+            
           </div>
         </div>
       </div>
@@ -93,3 +104,18 @@ function MoviesBox({
 }
 
 export default MoviesBox;
+/*
+<span className="download-link-btn">
+        
+        {name === 'movie'?loadingDownload?<>
+          <span className="download-info-popup bg-gray">
+          <p>download link will take time to generate between 10s to 30s</p>
+        </span>
+          <Spiner/>
+        </>:
+        <span className="add flex center" style={{ marginRight: "7px" }} >
+        <Link to="/download" state={{ type: type, year: year, name: nameDW,dt:dt }}>
+          <Download width={"15px"} />
+        </Link>
+      </span>:''}
+        </span>*/
