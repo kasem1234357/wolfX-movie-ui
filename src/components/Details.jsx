@@ -37,7 +37,8 @@ function Details({ data3, target, name,showId }) {
     }
   }, [movies, data3, name]);
 useEffect(()=>{
-  axios.post('https://download-url-generator.onrender.com/get-links',{
+  if(name === 'movie'){
+    axios.post('https://download-url-generator.onrender.com/get-links',{
     name:nameDW,
     year:year
    }).then(res =>{
@@ -48,6 +49,8 @@ useEffect(()=>{
     console.log(err)
     setLoadingDownload(false);
    })
+  }
+  
 },[nameDW,year,type])
   return (
     <div>
@@ -109,7 +112,7 @@ useEffect(()=>{
         
         <span className="download-link-btn">
         
-        {loadingDownload?<>
+        {name === 'movie'?loadingDownload?<>
           <span className="download-info-popup bg-gray">
           <p>download link will take time to generate between 10s to 30s</p>
         </span>
@@ -119,7 +122,7 @@ useEffect(()=>{
         <Link to="/download" state={{ type: type, year: year, name: nameDW,dt:dt }}>
           <Download width={"15px"} />
         </Link>
-      </span>}
+      </span>:''}
         </span>
         
         
