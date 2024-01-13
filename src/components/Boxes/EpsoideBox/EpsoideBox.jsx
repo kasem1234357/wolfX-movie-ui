@@ -81,7 +81,7 @@ function MoviesBox({
              
 
             {loading?<>
-          <span className="download-info-popup bg-gray">
+          <span className="download-info-popup bg-gray" style={{zIndex:1000}}>
           <p>download link will take time to generate between 10s to 30s</p>
         </span>
           <Spiner/>
