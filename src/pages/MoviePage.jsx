@@ -119,7 +119,8 @@ if(loading){
         })}
        </select>
        </div>
-      <Epsoides genres={data3.all.genres} originalLanguage={data3?.all?.original_language} tvId={typeId} name={data3?.all?.name } season={season} imageUrl={data3.all.poster_path}/>
+      <Epsoides genres={data3.all.genres} originalLanguage={data3?.all?.original_language} tvId={typeId} name={data3?.all?.name ||
+    data3?.all?.title } season={season} imageUrl={data3.all.poster_path}/>
        </>
        
       

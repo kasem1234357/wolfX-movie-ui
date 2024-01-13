@@ -15,16 +15,35 @@ function MoviesBox({
       originalLanguage === "ja" &&
       genres.some((genre) => genre.name === "Animation")
     ) {
-      nvigate(
+      navigate(
         `/watch?type=Anime&epsoide=${data.episode_number}&season=${season}&id=${tvId}&server=4&name=${name}`
       );
     } else {
-      nvigate(
+      navigate(
         `/watch?type=tv&epsoide=${data.episode_number}&season=${season}&id=${tvId}&server=1`
       );
     }
   }
-  const nvigate = useNavigate();
+  const [loading,setLoading] = useState(false)
+  const [dt,setDt]=useState([]);
+  const generateDownload = ()=>{
+      setLoading(true)
+        axios.post('https://download-url-generator.onrender.com/get-links-tv',{
+        name:name,
+        epsoide:data.episode_number,
+        season,
+       }).then(res =>{
+        setDt(res.data)
+        console.log(res.data);
+        setLoading(false)
+        navigate('/download',{state:{ type: type, year: year, name: name,dt:res.data }})
+       }).catch(err =>{
+        console.log(err)
+        setLoading(false);
+       })
+
+  }
+  const navigate = useNavigate();
   // const target =()=>{
   //   window.open(`https://autoembed.to/tv/tmdb/${tvId}-${season}-${data.episode_number}`)
   //   }
@@ -55,7 +74,9 @@ function MoviesBox({
           </div>
           <div className="flex center">
             <span className="add flex center">
-              <Download width={"15px"} />
+              <Download onClick={()=>{
+                 generateDownload()
+              }} width={"15px"} />
             </span>
           </div>
         </div>
