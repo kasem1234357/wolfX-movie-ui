@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 // import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,11 @@ function Register() {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  useEffect(()=>{
+    if(status === "succeeded"){
+      navigate('/')
+    }
+  },[status])
   return (
     <div className="form-box2 bg-gray flex f-column padding">
     <form className='bg-gray flex f-column flow text-white' onSubmit={(e)=>{register(e,values,{navigate,dispatch})}}>
