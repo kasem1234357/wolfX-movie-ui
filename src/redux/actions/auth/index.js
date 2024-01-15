@@ -25,6 +25,7 @@ export const authExtraReducers = (builder)=>{
    const decodedUser = jwtDecode(action.payload);
    state.user = decodedUser
    localStorage.setItem('userToken', JSON.stringify(action.payload));
+   state.verified = decodedUser.verified
    localStorage.setItem("isVerified", decodedUser.verified);
    localStorage.setItem('movies',JSON.stringify(decodedUser.favMovies));
 
