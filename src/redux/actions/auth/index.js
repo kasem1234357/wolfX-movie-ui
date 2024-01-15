@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
+import {jwtDecode} from "jwt-decode";
 import observable from '../../../utils/notification';
 
 const LOG_URL ="https://wolfxmovie2.onrender.com/api/auth/login"
@@ -21,8 +22,9 @@ export const authExtraReducers = (builder)=>{
   })
   .addCase(logUser.fulfilled, (state, action)=>{
    state.status = 'succeeded'
-   state.user = action.payload
-   localStorage.setItem('user', JSON.stringify(action.payload._id));
+   const decodedUser = jwtDecode(action.payload);
+   state.user = decodedUser
+   localStorage.setItem('user', JSON.stringify(action.payload));
    observable.notify({type:"success",msg:"login done"});
   })
   .addCase(logUser.rejected, (state, action) => {
