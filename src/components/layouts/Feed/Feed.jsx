@@ -15,7 +15,7 @@ import { handleClick } from '../../../configs/notificationConfig';
 const Feed =memo(({active,setActive}) => {
    const[activeSearch,setActiveSearch]=useState(false)
    const user = useSelector(state => state.users?.user)
-   const isVerified = useSelector(state => state.users)
+   const isVerified = useSelector(state => state.users.verified)
    const[activeFilter,setActiveFilter]=useState(false)
    const[currentSelect,setCurrentSelect]=useState("");
    const[filterData,setFilterData]= useState({
