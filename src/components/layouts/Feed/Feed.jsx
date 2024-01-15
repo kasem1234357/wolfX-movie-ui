@@ -15,6 +15,7 @@ import { handleClick } from '../../../configs/notificationConfig';
 const Feed =memo(({active,setActive}) => {
    const[activeSearch,setActiveSearch]=useState(false)
    const user = useSelector(state => state.users?.user)
+   const isVerified = useSelector(state => state.users)
    const[activeFilter,setActiveFilter]=useState(false)
    const[currentSelect,setCurrentSelect]=useState("");
    const[filterData,setFilterData]= useState({
@@ -100,7 +101,7 @@ const Feed =memo(({active,setActive}) => {
     <FilterSelect filterApi={filterApi} filterData={filterData} setActiveFilter={setActiveFilter} setCurrentSelect={setCurrentSelect} activeFilter={activeFilter} setFilterData={setFilterData} currentSelect={currentSelect}/>
 {/*============= url to the the mian pages==============================*/ }
         </nav>
-        {user?._id && !user?.verified &&<div className='not-verified fill  flex center text-white'>
+        {user?._id && !isVerified &&<div className='not-verified fill  flex center text-white'>
        you are not verified verified your account <span onClick={()=>{
          navigate('/account',{ state: { type: 'verification' } })
          startVerifiedOperation(user?._id,[

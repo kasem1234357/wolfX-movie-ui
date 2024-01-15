@@ -19,12 +19,14 @@ const Explore = lazy(()=> import("./components/Explore"))
 const Download  = lazy(()=> import("./pages/Download"))
 const ActorsPage = lazy(()=> import("./pages/ActorsPage"))
 function App() {
-
+  const setMovies =()=>{
+    dispatch(restore(JSON.parse(localStorage.getItem('movies'))))
+  }
   const status = useSelector(getStatus)
   const user = useSelector(state => state.users.user)
   const dispatch = useDispatch()
    useEffect(()=>{
-       dispatch(restore(user?.favMovies))
+       setMovies()
    },[status,user])
   return(
     <>

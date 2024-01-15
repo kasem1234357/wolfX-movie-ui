@@ -5,7 +5,9 @@ import {BrowserRouter as Router} from
 'react-router-dom'
 import { Provider } from 'react-redux'
 import {store} from './redux/store'
-import { getUser } from './redux/slices/userSlice';
+import { getStatus, getUser } from './redux/slices/userSlice';
+import { addMovie, restore } from './redux/slices/movieSlice';
+
 const userData= localStorage.getItem('userToken') ?localStorage.getItem('userToken') : null
 userData && store.dispatch(getUser())
 ReactDOM.render(

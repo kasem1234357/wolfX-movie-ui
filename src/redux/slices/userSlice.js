@@ -15,5 +15,5 @@ export const userSlice = createSlice({
     },
   });
 export const getStatus = (state)=> state.users.status
-export const {addUser,verifiedUser,getUser} = userSlice.actions;
+export const {addUser,verifiedUser,getUser,clearUser} = userSlice.actions;
 export default userSlice.reducer
