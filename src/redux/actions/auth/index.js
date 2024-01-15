@@ -24,7 +24,7 @@ export const authExtraReducers = (builder)=>{
    state.status = 'succeeded'
    const decodedUser = jwtDecode(action.payload);
    state.user = decodedUser
-   localStorage.setItem('user', JSON.stringify(action.payload));
+   localStorage.setItem('userToken', JSON.stringify(action.payload));
    observable.notify({type:"success",msg:"login done"});
   })
   .addCase(logUser.rejected, (state, action) => {

@@ -3,7 +3,7 @@ export const user_layout_actions ={
     addUser:(state,action)=>{
         state.status = "succeeded"
         state.user = jwtDecode(action.payload)
-        localStorage.setItem('user', JSON.stringify(action.payload));
+        localStorage.setItem('userToken', JSON.stringify(action.payload));
     },
     verifiedUser:(state,action)=>{
         state.status = "succeeded"
@@ -11,7 +11,8 @@ export const user_layout_actions ={
     },
     getUser:(state,action)=>{
         state.status = "succeeded"
-        const data = localStorage.getItem('user'); 
+        const data = localStorage.getItem('userToken'); 
+        
         const decodedUser = jwtDecode(data);
    state.user = decodedUser
         
