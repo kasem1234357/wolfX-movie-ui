@@ -4,5 +4,6 @@ export const initialState = {
     notification:true,
     auth:false,
     loading:true,
+    verified:false,
     error: null, //loading || success || failure 
    }

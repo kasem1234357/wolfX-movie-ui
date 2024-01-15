@@ -13,6 +13,7 @@ function Register() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const status = useSelector(getStatus)
+  const [loading,setLoading]= useState(false)
   // const {setUserData} = useContext(contextData)
   const [values, setValues] = useState({
     userName: "",
@@ -30,7 +31,7 @@ function Register() {
   },[status])
   return (
     <div className="form-box2 bg-gray flex f-column padding">
-    <form className='bg-gray flex f-column flow text-white' onSubmit={(e)=>{register(e,values,{navigate,dispatch})}}>
+    <form className='bg-gray flex f-column flow text-white' onSubmit={(e)=>{register(e,values,{navigate,dispatch,setLoading})}}>
       
       {schema(values).signUp.map(input=>{
 
@@ -52,7 +53,7 @@ function Register() {
       
       
       </div>
-      {status === 'loading'? <span className='loaderX2'></span> : <input className='submit ' type="submit" value={
+      {loading? <span className='loaderX2'></span> : <input className='submit ' type="submit" value={
       status === "loading"?"":'Login Now'} />}
     </form>
     </div>
