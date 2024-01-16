@@ -23,11 +23,11 @@ function FilterSelect({setCurrentSelect,filterApi,filterData,setActiveFilter,act
         <div className='select-area' data-placeholder="type"   name="type" id="" value={""} onClick={()=>setCurrentSelect("type")}> type
     
     <div className={`select-items-box ${currentSelect === "type"?"active-select":""}`}>
-    {filterApi.type.map(({id,name})=>(
+    {filterApi.type.map(({movieId,tvId,id,name})=>(
             <div value={id} onClick={()=>{
                filterData.type.some(data => data.id === id)?setFilterData((prev)=>{
                   return {...prev,type:prev.type.filter(data => data.id !== id)}}): setFilterData((prev)=>{
-                   return {...prev,type:[...prev.type,{id,name}]}})
+                   return {...prev,type:[...prev.type,{movieId,tvId,id,name}]}})
                   
                
             }}>{name}</div>

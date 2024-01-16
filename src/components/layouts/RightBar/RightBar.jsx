@@ -14,7 +14,10 @@ import { useState } from 'react'
 import { filterApi } from '../../Boxes/filterBox/FilterApi'
 import {filter} from '../../../utils/filterNavigate'
 const RightBar = memo(({active,setActive}) => {
-
+ const logOut = ()=>{
+  localStorage.clear()
+  window.location.reload();
+ }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeFilter,setActiveFilter]=useState(false)
@@ -103,7 +106,7 @@ const RightBar = memo(({active,setActive}) => {
      <FilterBtn name='more-items' style={{flex:'2',}} onClick={()=>setActiveFilter(true)}/>
      
     </div>
-    
+    <button className='filter-btn-box flex-items box bg-main fill flex flex-between f-column text-white' style={{outline:'none',border:"none"}} onClick={logOut}>logout</button>
    </div>
    
     </div>
