@@ -75,9 +75,9 @@ function FilterSelect({setCurrentSelect,filterApi,filterData,setActiveFilter,act
     <button onClick={()=>{
         if(activeFilter){
             if(window.location.pathname === ('/explore/tv')){
-                navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.movieId)],origin:[...filterData.country.map(d =>d.id)] } })
+                navigate("explore/tv",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.tvId)],origin:[...filterData.country.map(d =>d.id)] } })
                }else{
-                navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.tvId)],origin:[...filterData.country.map(d =>d.id)] } })
+                navigate("explore/movie",{ state: { dataType: 'filtershowsByType',years:filterData.year,filter:[...filterData.type.map(d =>d.movieId)],origin:[...filterData.country.map(d =>d.id)] } })
                }
         }
         setActiveFilter(false)
