@@ -2,7 +2,7 @@ import axios from "axios"
 import { downloadGenrator } from "./downloadLinkGenerator"
 
 export const getMainDownloadLink = (data,setDt,setLoadingDownload,cb=[],errCb=[])=>{
-
+     console.log({...data,name:'_'+data.name.split(' ').join('_')});
     axios.post('https://wolfxmovie2.onrender.com/api/movies/check',{...data,name:'_'+data.name.split(' ').join('_')}).then(res =>{
         setDt(res.data)
         cb.length >0 &&cb.forEach(el =>{
