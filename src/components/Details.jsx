@@ -31,15 +31,15 @@ function Details({ data3, target, name,showId }) {
     data3.all
       .title; 
   const type = name === "movie" ? "Movie" : "Series";
-  const checkRange =()=>{
+  const checkRange =(name)=>{
      switch (true) {
-      case nameDW[0].toLowerCase().charCodeAt() >= 97:
+      case name[0].toLowerCase().charCodeAt() >= 97 && name[0].toLowerCase().charCodeAt()<=102:
            return 'A_F';
-      case nameDW[0].toLowerCase().charCodeAt()>102:
+      case name[0].toLowerCase().charCodeAt()>102 && name[0].toLowerCase().charCodeAt()<=108:
            return 'G_L';
-      case nameDW[0].toLowerCase().charCodeAt()>108:
+      case name[0].toLowerCase().charCodeAt()>108 && name[0].toLowerCase().charCodeAt()<=114:
            return 'M_R';
-           case nameDW[0].toLowerCase().charCodeAt()>114 && nameDW[0].toLowerCase().charCodeAt()<=122:
+           case name[0].toLowerCase().charCodeAt()>114 && name[0].toLowerCase().charCodeAt()<=122:
             return 'S_Z';
       default:
         return 'other'
@@ -59,7 +59,7 @@ useEffect(()=>{
       {name:nameDW,
        year,
        month,
-       range:checkRange()
+       range:checkRange(nameDW)
       },setDt,setLoadingDownload)
    
   }

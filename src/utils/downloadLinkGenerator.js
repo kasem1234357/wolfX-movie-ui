@@ -1,6 +1,6 @@
 import axios from "axios";
  const addLinkToDB = (data)=>{
-    axios.post('https://wolfxmovie2.onrender.com/api/movies/add',data).then(
+    axios.post('https://wolfxmovie2.onrender.com/api/movies/add',{...data,name:'_'+data.name.split(' ').join('_')}).then(
         ()=>{
             console.log('done');
         }
