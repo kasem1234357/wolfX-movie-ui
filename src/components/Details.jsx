@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import WarningPopup from "./Boxes/WarningBox/WarningPopup";
 import Spiner from "./custom/Spiner";
-import axios from "axios";
+import { getMainDownloadLink } from "../utils/getMainDownloadLink";
 function Details({ data3, target, name,showId }) {
   const [checkData, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,12 +23,29 @@ function Details({ data3, target, name,showId }) {
     name === "movie"
       ? data3?.all.release_date.split("-")[0]
       : data3?.all.first_air_date.split("-")[0];
+      const month =  name === "movie"
+      ? data3?.all.release_date.split("-")[1]
+      : data3?.all.first_air_date.split("-")[1];
   const nameDW =
     data3.all.name ||
     data3.all
       .title; 
   const type = name === "movie" ? "Movie" : "Series";
-  
+  const checkRange =()=>{
+     switch (true) {
+      case nameDW[0].toLowerCase().charCodeAt() >= 97:
+           return 'A_F';
+      case nameDW[0].toLowerCase().charCodeAt()>102:
+           return 'G_L';
+      case nameDW[0].toLowerCase().charCodeAt()>108:
+           return 'M_R';
+           case nameDW[0].toLowerCase().charCodeAt()>114 && nameDW[0].toLowerCase().charCodeAt()<=122:
+            return 'S_Z';
+      default:
+        return 'other'
+        break;
+     }
+  }
   useEffect(() => {
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
@@ -38,17 +55,13 @@ function Details({ data3, target, name,showId }) {
   }, [movies, data3, name]);
 useEffect(()=>{
   if(name === 'movie'){
-    axios.post('https://download-url-generator.onrender.com/get-links',{
-    name:nameDW,
-    year:year
-   }).then(res =>{
-    setDt(res.data)
-    console.log(res.data);
-    setLoadingDownload(false)
-   }).catch(err =>{
-    console.log(err)
-    setLoadingDownload(false);
-   })
+     getMainDownloadLink(
+      {name:nameDW,
+       year,
+       month,
+       range:checkRange()
+      },setDt,setLoadingDownload)
+   
   }
   
 },[nameDW,year,type])
