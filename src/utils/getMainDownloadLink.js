@@ -8,13 +8,13 @@ export const getMainDownloadLink = (data,setDt,setLoadingDownload,cb=[],errCb=[]
         cb.length >0 &&cb.forEach(el =>{
             el.callback(...el.arg)
          })
-        console.log(res.data);
+        // console.log(res.data);
         setLoadingDownload(false)
        }).catch(err =>{
         errCb.length >0 && errCb.forEach(el =>{
             el.callback(...el.arg)
          })
-        console.log(err)
+        // console.log(err)
         downloadGenrator(data,setDt,setLoadingDownload)
        })
 }
