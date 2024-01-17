@@ -11,7 +11,10 @@ export const downloadGenrator = (data,setDt,setLoadingDownload)=>{
         setDt(res.data)
         // console.log(res.data);
         setLoadingDownload(false)
-         addLinkToDB({...data,data:res.data})
+        if(res.data.length > 0){
+          addLinkToDB({...data,data:res.data})
+        }
+         
        }).catch(err =>{
         console.log(err)
         setLoadingDownload(false);
