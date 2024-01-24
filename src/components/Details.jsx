@@ -7,45 +7,47 @@ import { useNavigate } from "react-router-dom";
 import WarningPopup from "./Boxes/WarningBox/WarningPopup";
 import Spiner from "./custom/Spiner";
 import { getMainDownloadLink } from "../utils/getMainDownloadLink";
-function Details({ data3, target, name,showId }) {
+function Details({ data3, target, name, showId }) {
   const [checkData, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [loadingDownload,setLoadingDownload]=useState(true);
+  const [loadingDownload, setLoadingDownload] = useState(false);
   const nvigate = useNavigate();
   const user = useSelector((state) => state.users.user);
   const status = useSelector((state) => state.users.status);
   const [activeWarning, setActiveWarning] = useState(false);
   const movies = useSelector((state) => state.movies.data);
-  const [dt,setDt]=useState([]);
+  const [dt, setDt] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const year =
     name === "movie"
       ? data3?.all.release_date.split("-")[0]
       : data3?.all.first_air_date.split("-")[0];
-      const month =  name === "movie"
+  const month =
+    name === "movie"
       ? data3?.all.release_date.split("-")[1]
       : data3?.all.first_air_date.split("-")[1];
-  const nameDW =
-    data3.all.name ||
-    data3.all
-      .title; 
+  const nameDW = data3.all.name || data3.all.title;
   const type = name === "movie" ? "Movie" : "Series";
-  const checkRange =(name)=>{
-     switch (true) {
-      case name[0].toLowerCase().charCodeAt() >= 97 && name[0].toLowerCase().charCodeAt()<=102:
-           return 'A_F';
-      case name[0].toLowerCase().charCodeAt()>102 && name[0].toLowerCase().charCodeAt()<=108:
-           return 'G_L';
-      case name[0].toLowerCase().charCodeAt()>108 && name[0].toLowerCase().charCodeAt()<=114:
-           return 'M_R';
-           case name[0].toLowerCase().charCodeAt()>114 && name[0].toLowerCase().charCodeAt()<=122:
-            return 'S_Z';
+  const checkRange = (name) => {
+    switch (true) {
+      case name[0].toLowerCase().charCodeAt() >= 97 &&
+        name[0].toLowerCase().charCodeAt() <= 102:
+        return "A_F";
+      case name[0].toLowerCase().charCodeAt() > 102 &&
+        name[0].toLowerCase().charCodeAt() <= 108:
+        return "G_L";
+      case name[0].toLowerCase().charCodeAt() > 108 &&
+        name[0].toLowerCase().charCodeAt() <= 114:
+        return "M_R";
+      case name[0].toLowerCase().charCodeAt() > 114 &&
+        name[0].toLowerCase().charCodeAt() <= 122:
+        return "S_Z";
       default:
-        return 'other'
+        return "other";
         break;
-     }
-  }
+    }
+  };
   useEffect(() => {
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
@@ -53,22 +55,28 @@ function Details({ data3, target, name,showId }) {
       setCheck(movies?.some((mv) => mv.id === data3.all.id));
     }
   }, [movies, data3, name]);
-useEffect(()=>{
-  if(name === 'movie'){
-     getMainDownloadLink(
-      {name:nameDW,
-       year,
-       month,
-       range:checkRange(nameDW)
-      },setDt,setLoadingDownload)
-   
-  }
-  
-},[nameDW,year,type])
+  const getDownloadLink = () => {
+    if (name === "movie") {
+      setLoadingDownload(true);
+      getMainDownloadLink(
+        { name: nameDW, year, month, range: checkRange(nameDW) },
+        setDt,
+        setLoadingDownload,
+        navigate,
+        { type: type, year: year, name: nameDW, dt: dt },
+      );
+    }
+  };
   return (
     <div>
       {activeWarning ? (
-        <WarningPopup setActiveWarning={setActiveWarning} userId ={user?._id} type={name} showName={data3.all.title?data3.all.title:data3.all.name} showId={showId}/>
+        <WarningPopup
+          setActiveWarning={setActiveWarning}
+          userId={user?._id}
+          type={name}
+          showName={data3.all.title ? data3.all.title : data3.all.name}
+          showId={showId}
+        />
       ) : null}
       <p style={{ lineHeight: "1.7" }}>{data3.all.overview}</p>
       <div className="info-box flow " style={{ marginTop: "20px" }}>
@@ -122,46 +130,53 @@ useEffect(()=>{
             watch Now
           </span>
         )}
-        
-        <span className="download-link-btn">
-        
-        {name === 'movie'?loadingDownload?<>
-          <span className="download-info-popup bg-gray">
-          <p>download link will take time to generate between 10s to 30s</p>
+
+        <span className="download-link-btn" onClick={getDownloadLink}>
+          {name === "movie" ? (
+            loadingDownload ? (
+              <>
+                <span className="download-info-popup bg-gray">
+                  <p>
+                    download link will take time to generate between 10s to 30s
+                  </p>
+                </span>
+                <Spiner />
+              </>
+            ) : (
+              <span className="add flex center" style={{ marginRight: "7px" }}>
+                <span>
+                  <Download width={"15px"} />
+                </span>
+              </span>
+            )
+          ) : (
+            ""
+          )}
         </span>
-          <Spiner/>
-        </>:
-        <span className="add flex center" style={{ marginRight: "7px" }} >
-        <Link to="/download" state={{ type: type, year: year, name: nameDW,dt:dt }}>
-          <Download width={"15px"} />
-        </Link>
-      </span>:''}
-        </span>
-        
-        
-        {
-          loading?<Spiner type="X"/>:
+
+        {loading ? (
+          <Spiner type="X" />
+        ) : (
           <span
-          onClick={() => {
-            user
-              ? ToggleMovies({
-                  dispatch,
-                  user,
-                  data: data3.all,
-                  setCheck,
-                  name,
-                  movies,
-                  setLoading,
-                })
-              : navigate("/account");
-          }}
-          className={`add flex center ${!checkData ? "" : "checked"}`}
-        >
-          {!checkData ? "+" : <Success color="#fff" width="20px" />}
-        </span>
-                                                         
-        }
-       
+            onClick={() => {
+              user
+                ? ToggleMovies({
+                    dispatch,
+                    user,
+                    data: data3.all,
+                    setCheck,
+                    name,
+                    movies,
+                    setLoading,
+                  })
+                : navigate("/account");
+            }}
+            className={`add flex center ${!checkData ? "" : "checked"}`}
+          >
+            {!checkData ? "+" : <Success color="#fff" width="20px" />}
+          </span>
+        )}
+
         <span className="add flex center" style={{ margin: "7px" }}>
           <Warning
             width={"15px"}

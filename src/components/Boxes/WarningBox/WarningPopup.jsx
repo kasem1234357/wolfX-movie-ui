@@ -29,7 +29,7 @@ const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
     },
   ])
   const [isLoading,setIsLoading]= useState(false)
-  const verified = useSelector(state => state.users.user.verified)
+  const verified = useSelector(state => state?.users?.user?.verified)|| false
   const textAreaRef = useRef('')
   const {addItem,removeItem,selectors,searchForItem} = useMultiSelect()
   return (
@@ -68,7 +68,7 @@ const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
           showName,
           problemType:selectors,
           showId,
-          userMsg:textAreaRef?.current.value
+          userMsg:textAreaRef?.current?.value || ""
         },setIsLoading)
         handleClick({type:"success",msg:"your report send successfily"})
       }else{
