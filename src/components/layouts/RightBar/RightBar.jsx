@@ -13,7 +13,10 @@ import FilterBox from '../../Boxes/filterBox/FilterBox'
 import { useState } from 'react'
 import { filterApi } from '../../Boxes/filterBox/FilterApi'
 import {filter} from '../../../utils/filterNavigate'
+import useDebounce from '../../../hooks/useDebounce'
+import usePrevious from '../../../hooks/usePrevious'
 const RightBar = memo(({active,setActive}) => {
+ 
  const logOut = ()=>{
   localStorage.clear()
   window.location.reload();
@@ -21,11 +24,46 @@ const RightBar = memo(({active,setActive}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeFilter,setActiveFilter]=useState(false)
-  const [filterID,setFilterID]=useState({})
+  const [filterID,setFilterID]=useState('')
+  const [inputValue,setInputValue]=useState('')
   const user = useSelector(state => state.users.user)
   const status = useSelector(state => state.users.status)
   const url = window.location.pathname.slice(window.location.pathname.lastIndexOf("/")+1)
   const inputRef = useRef("")
+  
+  
+  const handleSearch = ()=>{
+    if(window.location.pathname === ('/explore/tv')){
+     navigate("explore/tv",{ state: { dataType: 'search' } })
+    }else if(window.location.pathname === ('/exploreActors')){
+     navigate("exploreActors",{ state: { dataType: 'searchByActor'} })
+    }else{
+     navigate("explore/movie",{ state: { dataType: 'search'} })
+    }
+    if(inputValue === ''){
+     if(window.location.pathname === ('/explore/tv')){
+       navigate("explore/tv",{ state: { dataType: 'explore' } })
+       
+      }else if(window.location.pathname === ('/exploreActors')){
+       navigate("exploreActors",{ state: { dataType: 'exploreActor' } })
+      }
+     
+      else{
+        console.log(filterID);
+       navigate("explore/movie",{ state: { dataType: 'explore',filter:filterID  } })
+      }
+    }
+    dispatch(searchUpdate(inputValue) )
+    ;}
+    const  resetInput =()=>{
+      if(inputRef){
+inputRef.current.value = ''
+      }
+
+    }
+    useDebounce(handleSearch,400,[inputValue])
+    usePrevious(window.location.pathname,{isnotTheSame:resetInput})
+
   return (
     <div className="flex rightBarContainer">
       {activeFilter?<FilterBox setActive={setActive} setActiveFilter={setActiveFilter}/>:null}
@@ -70,28 +108,7 @@ const RightBar = memo(({active,setActive}) => {
     </div>
     <div className="search bg-dark flex center text-gray">
      <img className="" src={search}alt=""  />
-     <input ref={inputRef} className='Search-input' type="search" name="" id="" onInput={(e)=>{
-       if(window.location.pathname === ('/explore/tv')){
-        navigate("explore/tv",{ state: { dataType: 'search' } })
-       }else if(window.location.pathname === ('/exploreActors')){
-        navigate("exploreActors",{ state: { dataType: 'searchByActor'} })
-       }else{
-        navigate("explore/movie",{ state: { dataType: 'search'} })
-       }
-       if(e.target.value === ''){
-        if(window.location.pathname === ('/explore/tv')){
-          navigate("explore/tv",{ state: { dataType: 'explore' } })
-          
-         }else if(window.location.pathname === ('/exploreActors')){
-          navigate("exploreActors",{ state: { dataType: 'exploreActor' } })
-         }
-        
-         else{
-          navigate("explore/movie",{ state: { dataType: 'explore',filter:filterID  } })
-         }
-       }
-       dispatch(searchUpdate(e.target.value) )
-       ;}}/>
+     <input ref={inputRef} className='Search-input' type="search" name="" id="" onInput={(e)=>setInputValue(e.target.value)}/>
     </div>
     <div className="filter-items flex flex-between fw-row text-gray" style={{fontSize:'14px'}}>
      {/* <div className="flex-items box bg-main flex flex-between"><p>horror</p>

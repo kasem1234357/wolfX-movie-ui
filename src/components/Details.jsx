@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Download, Success, Warning } from "./icons/svgIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleMovies } from "../utils/toggleMovies";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import WarningPopup from "./Boxes/WarningBox/WarningPopup";
 import Spiner from "./custom/Spiner";
 import { getMainDownloadLink } from "../utils/getMainDownloadLink";
+import { useTransition } from "react";
+
 function Details({ data3, target, name, showId }) {
   const [checkData, setCheck] = useState(false);
+  const [isPanding ,startTransiction] = useTransition()
   const [loading, setLoading] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
   const nvigate = useNavigate();
@@ -56,16 +58,19 @@ function Details({ data3, target, name, showId }) {
     }
   }, [movies, data3, name]);
   const getDownloadLink = () => {
-    if (name === "movie") {
-      setLoadingDownload(true);
-      getMainDownloadLink(
-        { name: nameDW, year, month, range: checkRange(nameDW) },
-        setDt,
-        setLoadingDownload,
-        navigate,
-        { type: type, year: year, name: nameDW, dt: dt },
-      );
-    }
+    startTransiction(()=>{
+      if (name === "movie") {
+        setLoadingDownload(true);
+        getMainDownloadLink(
+          { name: nameDW, year, month, range: checkRange(nameDW) },
+          setDt,
+          setLoadingDownload,
+          navigate,
+          { type: type, year: year, name: nameDW, dt: dt },
+        );
+      }
+    })
+    
   };
   return (
     <div>

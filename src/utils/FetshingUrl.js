@@ -14,7 +14,7 @@ searchByActor:(page,query)=>{
   return `${process.env.REACT_APP_URL}search/person?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`;
   //https://api.themoviedb.org/3/search/person?api_key=805e1c9c1b674a304211c1e10080e5f2&language=en-US&page=1&include_adult=false&query=Emma
 },
-explore:(name,page,query,year=null,genresId=null,origin)=>{
+explore:(name,page,query,year=null,genresId='',origin)=>{
   return (
 `${process.env.REACT_APP_URL}discover/${name}?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}${year?"&primary_release_year="+year:""}&with_genres=${genresId}&sort_by=popularity.desc`)
 },
