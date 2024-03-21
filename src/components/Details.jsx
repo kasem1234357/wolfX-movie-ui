@@ -179,8 +179,4 @@ function Details({ data3, target, name, showId }) {
 
 export default Details;
 
-    </div>
-  );
-}
 
-export default Details;
