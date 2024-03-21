@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useLayoutEffect , useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -69,6 +69,11 @@ const Watch = () => {
       )}-episode-${epsoide}`,
     },
   ];
+  const trash = ()=> {return 'false'}
+  useLayoutEffect(()=>{
+    window.addEventListener('beforeunload',trash)
+    return window.removeEventListener('beforeunload',trash)
+  },[])
   useEffect(() => {
     if (server === "4" && type === "Anime") {
       // activeAnimeServer(name,epsoide)
