@@ -1,19 +1,48 @@
 
-import axios from 'axios';
-import React, {  useState } from 'react'
-import { useLocation } from 'react-router-dom'
+
+import React, {  useEffect, useState } from 'react'
+import {  useSearchParams } from 'react-router-dom'
 import Loading from '../components/custom/Loading';
 import { Helmet } from 'react-helmet';
-
+import { getMainDownloadLink } from '../utils/getMainDownloadLink';
+const checkRange = (name) => { 
+  switch (true) {
+    case name[0].toLowerCase().charCodeAt() >= 97 &&
+      name[0].toLowerCase().charCodeAt() <= 102:
+      return "A_F";
+    case name[0].toLowerCase().charCodeAt() > 102 &&
+      name[0].toLowerCase().charCodeAt() <= 108:
+      return "G_L";
+    case name[0].toLowerCase().charCodeAt() > 108 &&
+      name[0].toLowerCase().charCodeAt() <= 114:
+      return "M_R";
+    case name[0].toLowerCase().charCodeAt() > 114 &&
+      name[0].toLowerCase().charCodeAt() <= 122:
+      return "S_Z";
+    default:
+      return "other";
+      break;
+  }
+};
 const Download = () => {
-   const location = useLocation();
-   const [loading,setLoading] = useState(false)
-  //  const [dt,setDt]=useState([]);
-   const name = location.state.name
+   const [loading,setLoading] = useState(true)
+   const [generator,setGenerator]= useState(false)
+   const [searchParams] = useSearchParams();
+    const [dt,setDt]=useState([]);
+   const name = searchParams.get("name")
+   //getMainDownloadLink
   console.log(name);
-  const type = location.state.type
-  const year = location.state.year
-  const dt = location.state.dt
+  const type = searchParams.get("type")
+  const year = searchParams.get("year")
+  const month = searchParams.get("month")
+  useEffect(()=>{
+    getMainDownloadLink(
+     { name: name, year, month, range: checkRange(name) },
+     setDt,
+          setLoading,
+          setGenerator,
+    )
+  },[])
   //  useEffect(()=>{
   //    axios.post('http://localhost:8800/get-links',{
   //     name:name,
@@ -34,9 +63,9 @@ const Download = () => {
         {name}
         </title>
       </Helmet>
-    
+   { !loading?
     <div>
-      {dt?.map(el =>(
+      {dt.length == 0 ?<div  style={{height:'min-content',background:'#353b41',padding:'20px 10px',textAlign:'center',color:'#fff'}}><h1>no url found sorry</h1></div> :dt?.map(el =>(
        <div className="direct-section">
        <div className="download-btn">
          <a href={el.url} target="_blank" className="direct-link" rel="noopener noreferrer">download</a>
@@ -47,7 +76,8 @@ const Download = () => {
       ))}
     
     
-  </div>
+  </div>:<>{generator?<div  style={{height:'min-content',background:'#353b41',padding:'20px 10px'}}><p style={{color:'#fff',textAlign:'center'}}>main url not found we are trying to generate alternative url this operation will take some time</p></div>:""}<Loading/></>
+}
     
     
     
@@ -62,35 +92,3 @@ export default Download
 
 
 
-
-
-
-
-
-
-
-/*
-  const server1 = (n,type,year,name)=>{
-    const nameSv1 = type === "Movie"?name.split(" ").join(".")+"."+year:name.split(" ").join(".")
-    return `https://up4cash.com/st?api=222b9419cb010e4f5c5ed2c2c3c61ddde17f3037&url=http://dl${n}.sermovie.xyz/${type}/${year}/${nameSv1}/`
-  }
-  const server3 = (type,year,name)=>{
-    const nameSv3 = name.split(" ").join(".")
-    const typeSv3 = type === "Movie"?"Movies":"Series"
-    return `https://up4cash.com/st?api=222b9419cb010e4f5c5ed2c2c3c61ddde17f3037&url=http://dl4.sermovie.xyz/${typeSv3}/${year}/${nameSv3}/`
-  }
-  const server2 =(type,year,name)=>{
-     const typeSv = type === "Movie"?"Movie":"TVS"
-     const nameSv2 = name.split(" ").join("%20")
-     return `https://up4cash.com/st?api=222b9419cb010e4f5c5ed2c2c3c61ddde17f3037&url=http://s1.dlcm.xyz/Zone/${typeSv}/${typeSv !== "Movie"?nameSv2:`${year}/${nameSv2}%20${year}%20720p%20x264%20Webrip%20YIFY%20MOViE-ZONE.mp4`}`
-  }
-  const server4 = (type,year,name)=>{
-    const typeSv4 = type === "Movie"?"Movies":"Series"
-    const nameSv4 = name.split(" ").join(".")
-    return `https://up4cash.com/st?api=222b9419cb010e4f5c5ed2c2c3c61ddde17f3037&url=http://dl5.sermovie.xyz/${typeSv4}/${year}/${nameSv4}/`
-  }
-  const server5 = (type,year,name)=>{
-    const typeSv5 = type === "Movie"?"Film":"Series"
-    const nameSv4 = name.split(" ").join(".")+"."+year
-    return `https://up4cash.com/st?api=222b9419cb010e4f5c5ed2c2c3c61ddde17f3037&url=https://dl10.dlseemoon.xyz/${typeSv5}/SoftSub/${year}/${nameSv4}.480p.WEB-DL.RMT.SoftSub.Golchindl.mkv/`
-  }*/
