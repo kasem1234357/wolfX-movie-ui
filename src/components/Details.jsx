@@ -5,7 +5,7 @@ import { ToggleMovies } from "../utils/toggleMovies";
 import { useNavigate } from "react-router-dom";
 import WarningPopup from "./Boxes/WarningBox/WarningPopup";
 import Spiner from "./custom/Spiner";
-import { getMainDownloadLink } from "../utils/getMainDownloadLink";
+
 import { useTransition } from "react";
 
 function Details({ data3, target, name, showId }) {
@@ -18,7 +18,6 @@ function Details({ data3, target, name, showId }) {
   const status = useSelector((state) => state.users.status);
   const [activeWarning, setActiveWarning] = useState(false);
   const movies = useSelector((state) => state.movies.data);
-  const [dt, setDt] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const year =
@@ -31,7 +30,7 @@ function Details({ data3, target, name, showId }) {
       : data3?.all.first_air_date.split("-")[1];
   const nameDW = data3.all.name || data3.all.title;
   const type = name === "movie" ? "Movie" : "Series";
-  const checkRange = (name) => {
+  const checkRange = (name) => { 
     switch (true) {
       case name[0].toLowerCase().charCodeAt() >= 97 &&
         name[0].toLowerCase().charCodeAt() <= 102:
@@ -58,16 +57,18 @@ function Details({ data3, target, name, showId }) {
     }
   }, [movies, data3, name]);
   const getDownloadLink = () => {
+    //[name,nameDW,year,month,checkRange,type]
     startTransiction(()=>{
       if (name === "movie") {
-        setLoadingDownload(true);
-        getMainDownloadLink(
-          { name: nameDW, year, month, range: checkRange(nameDW) },
-          setDt,
-          setLoadingDownload,
-          navigate,
-          { type: type, year: year, name: nameDW, dt: dt },
-        );
+        nvigate(`/download?name=${nameDW}&year=${year}&month=${month}&type=${type}`)
+        //setLoadingDownload(true);
+        // getMainDownloadLink(
+        //   { name: nameDW, year, month, range: checkRange(nameDW) },
+        //   setDt,
+        //   setLoadingDownload,
+        //   navigate,
+        //   { type: type, year: year, name: nameDW, dt: dt },
+        // );
       }
     })
     
@@ -191,6 +192,12 @@ function Details({ data3, target, name, showId }) {
           />
         </span>
       </div>
+    </div>
+  );
+}
+
+export default Details;
+
     </div>
   );
 }
