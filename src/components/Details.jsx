@@ -30,25 +30,6 @@ function Details({ data3, target, name, showId }) {
       : data3?.all.first_air_date.split("-")[1];
   const nameDW = data3.all.name || data3.all.title;
   const type = name === "movie" ? "Movie" : "Series";
-  const checkRange = (name) => { 
-    switch (true) {
-      case name[0].toLowerCase().charCodeAt() >= 97 &&
-        name[0].toLowerCase().charCodeAt() <= 102:
-        return "A_F";
-      case name[0].toLowerCase().charCodeAt() > 102 &&
-        name[0].toLowerCase().charCodeAt() <= 108:
-        return "G_L";
-      case name[0].toLowerCase().charCodeAt() > 108 &&
-        name[0].toLowerCase().charCodeAt() <= 114:
-        return "M_R";
-      case name[0].toLowerCase().charCodeAt() > 114 &&
-        name[0].toLowerCase().charCodeAt() <= 122:
-        return "S_Z";
-      default:
-        return "other";
-        break;
-    }
-  };
   useEffect(() => {
     if (name === "movie") {
       setCheck(movies?.some((mv) => mv.imdb_id === data3.all.imdb_id));
