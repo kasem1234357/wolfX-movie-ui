@@ -2,8 +2,9 @@ import axios from "axios";
  const addLinkToDB = (data)=>{
     axios.post('https://wolfxmovie2.onrender.com/api/movies/add',{...data,name:'_'+data.name.split(' ').join('_')})
  }
-export const downloadGenrator = (data,setDt,setLoadingDownload,navigate,navigateData,cb)=>{
+export const downloadGenrator = (data,setDt,setLoadingDownload,setGenerator,cb)=>{
     const {name,year} = data
+    setGenerator(true)
     axios.post('https://download-url-generator.onrender.com/get-links',{
         name,
         year
@@ -11,16 +12,17 @@ export const downloadGenrator = (data,setDt,setLoadingDownload,navigate,navigate
         setDt(res.data)
         console.log(res.data);
         setLoadingDownload(false)
+        setGenerator(false)
         cb.length >0 &&cb.forEach(el =>{
           el.callback(...el.arg)
        })
-       navigate('/download',{state:{...navigateData,dt:res.data}})
         if(res.data?.length > 0){
           addLinkToDB({...data,data:res.data})
         }
          
        }).catch(err =>{
         console.log(err)
+        setGenerator(false)
         setLoadingDownload(false);
        })
 }
