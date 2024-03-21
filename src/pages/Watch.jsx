@@ -73,7 +73,7 @@ const Watch = () => {
   useLayoutEffect(()=>{
     window.addEventListener('beforeunload',trash)
     return window.removeEventListener('beforeunload',trash)
-  },[])
+  },[currentServer,currentUrl])
   useEffect(() => {
     if (server === "4" && type === "Anime") {
       // activeAnimeServer(name,epsoide)
