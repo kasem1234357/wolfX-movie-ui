@@ -145,6 +145,10 @@ export const filterApi = {
    id:"ES",
    name:"اسباني"
  },
+    {
+  id:'DE',
+  name:'الماني'
+ },
  {
    id:"KR",
    name:"كوري"
