@@ -3,12 +3,13 @@ import MoviesBox from '../MovieBox/MoviesBox'
 import '../../../styles/scrollBox.css'
 function ScrollBox(props) {
  const [pressed, setPressed] = useState(false);
+ const [isUserMobile, setIsUserMobile] = useState(false);
  const [stopPoint,setStopPoint]=useState(null)
   const [position, setPosition] = useState({x: 0,})
   const ref = useRef();
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && !isUserMobile) {
       setStopPoint((ref.current.children[0].childElementCount * 420 +30) - window.innerWidth);
       ref.current.scrollLeft =-position.x;
       
@@ -29,6 +30,9 @@ function ScrollBox(props) {
    
    onMouseMove={(e)=> onMouseMove(e) }
    onMouseDown={() => setPressed(true)}
+   onTouchStart={() => {
+          setIsUserMobile(true);
+        }}
    onMouseLeave={() =>{
     return setPressed(false)}}
     onClick={()=> {
