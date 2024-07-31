@@ -3,12 +3,12 @@ export const fetchUrl ={
  return (`${process.env.REACT_APP_URL}search/${name}?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`)
 },
 getActorMovies:(page,actorId)=>{
-   return `${process.env.REACT_APP_URL}/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&sort_by=release_date.desc&page=${page}&with_people=${actorId}`
+   return `${process.env.REACT_APP_URL}discover/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&sort_by=release_date.desc&page=${page}&with_people=${actorId}`
   //https://api.themoviedb.org/3/discover/movie?api_key=805e1c9c1b674a304211c1e10080e5f2&language=en-US&sort_by=release_date.desc&page=1&with_people=6193&language=en-US&append_to_response=combined_credits
 },
 exploreActor:(page)=>{
     
-  return `${process.env.REACT_APP_URL}/trending/person/week?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false`
+  return `${process.env.REACT_APP_URL}trending/person/week?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false`
 },
 searchByActor:(page,query)=>{
   return `${process.env.REACT_APP_URL}search/person?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`;
