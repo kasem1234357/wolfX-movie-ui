@@ -9,6 +9,7 @@ import { restore } from "./redux/slices/movieSlice";
 import { lazy, Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import Watch from "./pages/Watch";
+import Download from "./pages/Download";
 import ActorMovies from "./pages/ActorMovies";
 import { Helmet } from "react-helmet";
 const Account = lazy(()=> import('./pages/Account'))
@@ -16,7 +17,7 @@ const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
 const MoviePage = lazy(()=> import("./pages/MoviePage"))
 const Explore = lazy(()=> import("./components/Explore"))
-import Download from "./pages/Download"
+
 const ActorsPage = lazy(()=> import("./pages/ActorsPage"))
 function App() {
   const setMovies =()=>{
