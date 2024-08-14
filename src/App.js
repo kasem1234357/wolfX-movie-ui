@@ -16,7 +16,7 @@ const Faviorate = lazy(()=> import('./pages/Faviorate'))
 const Notification = lazy(()=> import("./pages/Notification"))
 const MoviePage = lazy(()=> import("./pages/MoviePage"))
 const Explore = lazy(()=> import("./components/Explore"))
-const Download  = lazy(()=> import("./pages/Download"))
+import Download from "./pages/Download"
 const ActorsPage = lazy(()=> import("./pages/ActorsPage"))
 function App() {
   const setMovies =()=>{
