@@ -71,7 +71,7 @@ const Download = () => {
          <a href={el.url} target="_blank" className="direct-link" rel="noopener noreferrer">download</a>
        </div>
        <div className="q">{el.res}</div>
-       <div className="q">{el.q}</div>
+       <div className="q">{el.q || 'WEBDL'}</div>
      </div>
       ))}
     
