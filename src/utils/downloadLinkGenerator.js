@@ -5,7 +5,7 @@ import axios from "axios";
 export const downloadGenrator = (data,setDt,setLoadingDownload,setGenerator,cb)=>{
     const {name,year} = data
     setGenerator(true)
-    axios.get(`https://download-url-generator.onrender.com/get-links?name=${name}&year=${year}`).then(res =>{
+    axios.get(`https://download-url-generator.onrender.com/server1/?title=${name}&year=${year}`).then(res =>{
         setDt(res.data)
         console.log(res.data);
         setLoadingDownload(false)
