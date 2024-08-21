@@ -3,6 +3,7 @@ import {  Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
 import Loading from "./components/custom/Loading";
 import Main from "./components/Main";
+import AI from './pages/AI'
 import {getStatus} from './redux/slices/userSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { restore } from "./redux/slices/movieSlice";
@@ -44,6 +45,7 @@ function App() {
          <Route path="" element={<Main />}/>
          <Route path="/MoviePage" element={<MoviePage />}/>
          <Route path="notification" element={<Notification/>}/>
+         <Route path="ai" element={<AI/>}/>
          <Route path="exploreActors" element={<ActorsPage />}/>
          <Route path="exploreActors/actor" element={<ActorMovies />}/>
          <Route path="explore/:name" element={<Explore />}/>
