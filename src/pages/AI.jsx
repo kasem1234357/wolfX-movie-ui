@@ -16,6 +16,7 @@ function AI() {
         }).then(res=>{
           const t =res.data.text
           console.log(t.substring(t.indexOf('['),t.indexOf(']')+1))
+         console.log(typeof(t.substring(t.indexOf('['),t.indexOf(']')+1)))
           const final =eval(t.substring(t.indexOf('['),t.indexOf(']')+1))
           setResult(final)
             // convertTextToArray(res.data.text)
