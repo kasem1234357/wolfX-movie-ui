@@ -11,7 +11,7 @@ function AI() {
     },[])
       const test = ()=>{
         console.log(divRef.current.textContent)
-        axios.post('http://localhost:8000/api/ai',{text:divRef.current.textContent},{
+        axios.post('https://wolfxmovie2.onrender.com/api/ai',{text:divRef.current.textContent},{
             timeout:60000
         }).then(res=>{
           const t =res.data.text
