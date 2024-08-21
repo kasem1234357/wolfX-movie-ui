@@ -15,7 +15,7 @@ function AI() {
             timeout:60000
         }).then(res=>{
           const t =res.data.text
-          console.log(t)
+          console.log(t.substring(t.indexOf('['),t.indexOf(']')+1))
           const final =eval(t.substring(t.indexOf('['),t.indexOf(']')+1))
           setResult(final)
             // convertTextToArray(res.data.text)
