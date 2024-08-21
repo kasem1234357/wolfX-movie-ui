@@ -67,7 +67,7 @@ const Feed =memo(({active,setActive}) => {
              <div>
                  <ul className="flex primary-navigation">
                     <Link to='ai' className="svg-icon">
-                    <AI width={'20px'} />
+                    <AiIcon width={'20px'} />
                  </Link>
                   {!activeSearch&&<> <Link to='notification' className="svg-icon">
                     <Notifications width={'20px'} />
