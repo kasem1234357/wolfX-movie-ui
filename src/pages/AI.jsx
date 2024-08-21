@@ -44,7 +44,11 @@ function AI() {
                 <div className="ai-card">
                     <ul>
                         <li><h2>{item.title}</h2></li>
+                        <li><h3>{item.year}</h3></li>
                         <li>{item.description}</li>
+                        <li>{item.language}</li>
+                        <li>{item.duration}</li>
+                        <li>{item.genre}</li>
                          <li className='link'>watch</li>
                     </ul>
                 </div>
