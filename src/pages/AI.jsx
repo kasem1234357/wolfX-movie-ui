@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
- 
+ import Loading from '../components/custom/Loading';
 function AI() {
    const [result,setResult]=useState([])
    const[loading,setLoading]=useState(false)
@@ -43,7 +43,7 @@ function AI() {
         <button className='ai-generate' onClick={test}>generate</button>
         </div>
         <div className='ai-result-area'>
-            {result?.map(item =>(
+            {!loading?result?.map(item =>(
                 <div className="ai-card">
                     <ul>
                         <li><h2>{item.title}</h2></li>
@@ -55,7 +55,7 @@ function AI() {
                          <li className='link'>watch</li>
                     </ul>
                 </div>
-            ))}
+            )):<Loading/>}
         </div>
     </div>
     
