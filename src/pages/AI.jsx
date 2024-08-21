@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
  
 function AI() {
    const [result,setResult]=useState([])
+   const[loading,setLoading]=useState(false)
     const divRef = useRef((''))
     useEffect(()=>{
       if(divRef){
@@ -10,11 +11,13 @@ function AI() {
       }
     },[])
       const test = ()=>{
+       setLoading(true)
         console.log(divRef.current.textContent)
         axios.post('https://wolfxmovie2.onrender.com/api/ai',{text:divRef.current.textContent},{
             timeout:60000
         }).then(res=>{
           const t =res.data.text
+         setLoading(false)
           console.log(t.substring(t.indexOf('['),t.indexOf(']')+1))
          console.log(typeof(t.substring(t.indexOf('['),t.indexOf(']')+1)))
           const final =eval(t.substring(t.indexOf('['),t.indexOf(']')+1))
