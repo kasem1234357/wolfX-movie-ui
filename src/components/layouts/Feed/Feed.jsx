@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import search from '../../images/search-svgrepo-com.svg'
 import { Link,  Outlet, useNavigate,  } from 'react-router-dom';
-import { AI ,Apps, BookMark, Filter,Notifications } from '../../icons/svgIcon';
+import { AiIcon ,Apps, BookMark, Filter,Notifications } from '../../icons/svgIcon';
 import {searchUpdate} from '../../../redux/slices/movieSlice'
 import { filterApi } from '../../Boxes/filterBox/FilterApi'
 import {useDispatch, useSelector}from 'react-redux'
