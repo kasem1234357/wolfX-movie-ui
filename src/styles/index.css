@@ -194,7 +194,7 @@ li#nav-block {
   background: #353b41;
   color: #fff;
 }
-a.direct-link {
+p.direct-link {
   padding: 10px 15px;
   background: #72787e;
   border-radius: 7px;
