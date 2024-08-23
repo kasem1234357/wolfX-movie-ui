@@ -197,6 +197,8 @@ li#nav-block {
 p.direct-link {
   padding: 10px 15px;
   background: #72787e;
+  cursor:pointer;
+  display:inline-block;
   border-radius: 7px;
 }
 .q {
