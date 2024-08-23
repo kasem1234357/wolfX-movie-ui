@@ -38,7 +38,8 @@ const Download = () => {
   const month = searchParams.get("month")
   const  downloadFunc =(url)=>{
    axios.get(`https://download-movie-url-generator.onrender.com/server1/download?url=${url}`).then(res=>{
-  console.log(res)
+  window.open( 
+              res.data, "_blank");
 })
 }
 
