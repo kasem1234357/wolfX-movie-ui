@@ -81,7 +81,7 @@ const Download = () => {
        <div className="download-btn" onClick={()=>{
            downloadFunc(el.url)
        }}>
-         <p className="direct-link" >{downloadLoading?<span className="loader"></span>:"download"}</p>
+         <p className="direct-link" >{downloadLoading?<span className="loaderDownload"></span>:"download"}</p>
        </div>
        <div className="q">{el.res}</div>
        <div className="q">{el.q || 'WEBDL'}</div>
