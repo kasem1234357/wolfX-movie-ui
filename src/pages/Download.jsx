@@ -27,6 +27,7 @@ const checkRange = (name) => {
 };
 const Download = () => {
    const [loading,setLoading] = useState(true)
+   const [downloadLoading,setDownloadLoading] = useState(false)
    const [generator,setGenerator]= useState(false)
    const [searchParams] = useSearchParams();
     const [dt,setDt]=useState([]);
@@ -37,7 +38,9 @@ const Download = () => {
   const year = searchParams.get("year")
   const month = searchParams.get("month")
   const  downloadFunc =(url)=>{
+    setDownloadLoading(true)
    axios.get(`https://download-movie-url-generator.onrender.com/server1/download?url=${url}`).then(res=>{
+     setDownloadLoading(false)
   window.open( 
               res.data, "_blank");
 })
@@ -78,7 +81,7 @@ const Download = () => {
        <div className="download-btn" onClick={()=>{
            downloadFunc(el.url)
        }}>
-         <p className="direct-link" >download</p>
+         <p className="direct-link" >{downloadLoading?<span className="loader"></span>:"download"}</p>
        </div>
        <div className="q">{el.res}</div>
        <div className="q">{el.q || 'WEBDL'}</div>
