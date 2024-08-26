@@ -79,7 +79,9 @@ const Download = () => {
       {dt.length == 0 ?<div  style={{height:'min-content',background:'#353b41',padding:'20px 10px',textAlign:'center',color:'#fff'}}><h1>no url found sorry</h1></div> :dt?.map(el =>(
        <div className="direct-section">
        <div className="download-btn" onClick={()=>{
+         if(!downloadLoading){
            downloadFunc(el.url)
+         }
        }}>
          <p className="direct-link" >{downloadLoading?<span className="loaderDownload"></span>:"download"}</p>
        </div>
