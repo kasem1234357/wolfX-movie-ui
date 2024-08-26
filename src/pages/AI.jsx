@@ -40,7 +40,7 @@ function AI() {
     <div ref={divRef} contenteditable="true" className='ai-write-area' autoFocus={true}></div>
     <div className='ai-btn'>
         <button>clear</button>
-        <button className='ai-generate' onClick={test}>generate</button>
+        <button className='ai-generate' disabled={loading} onClick={test}>{loading?<span className="loaderDownload"></span>:"generate"}</button>
         </div>
         <div className='ai-result-area'>
             {!loading?result?.map(item =>(
