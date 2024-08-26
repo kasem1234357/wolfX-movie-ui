@@ -389,6 +389,7 @@ p.direct-link {
   border: none;
   background: #72787e;
   color: #fff;
+  cursor:pointer;
 }
 .ai-btn button.ai-generate{
   background: #ff8100;
