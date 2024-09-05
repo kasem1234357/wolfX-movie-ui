@@ -61,6 +61,7 @@ function Details({ data3, target, name, showId }) {
           setActiveWarning={setActiveWarning}
           userId={user?._id}
           type={name}
+          year={+year}
           showName={data3.all.title ? data3.all.title : data3.all.name}
           showId={showId}
         />
