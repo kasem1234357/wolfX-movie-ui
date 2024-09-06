@@ -37,6 +37,24 @@ const Download = () => {
   const type = searchParams.get("type")
   const year = searchParams.get("year")
   const month = searchParams.get("month")
+  const downloadFile2 = (url) => {
+    // Create a new anchor element
+    const a = document.createElement('a');
+    a.href = url;
+    
+    // Set the download attribute with the desired filename
+    a.download = name;
+
+    // Append the anchor to the body
+    document.body.appendChild(a);
+
+    // Simulate a click on the anchor
+    a.click();
+
+    // Remove the anchor after triggering the download
+    document.body.removeChild(a);
+    setDownloadLoading(false);
+  };
   const  downloadFunc =(url)=>{
     setDownloadLoading(true)
     //https://ak.sv/download/162087/9708/darkness-of-man
@@ -48,8 +66,7 @@ const Download = () => {
 })
     }
   else{
-     window.location=url;
-   setDownloadLoading(false)
+     downloadFile2(url)
   }
 }
 
