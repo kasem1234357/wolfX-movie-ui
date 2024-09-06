@@ -5,7 +5,7 @@ import { sendReports } from '../../../utils/sendReports'
 import useMultiSelect from '../../../hooks/useMultiSelect'
 import { useSelector } from 'react-redux'
 import { handleClick } from '../../../configs/notificationConfig'
-const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
+const WarningPopup = ({setActiveWarning,userId,type,showName,showId,date}) => {
   const [items,setItems]= useState([
     {
       title:'download problem',
@@ -68,6 +68,7 @@ const WarningPopup = ({setActiveWarning,userId,type,showName,showId}) => {
           showName,
           problemType:selectors,
           showId,
+          date,
           userMsg:textAreaRef?.current?.value || ""
         },setIsLoading)
         handleClick({type:"success",msg:"your report send successfily"})
