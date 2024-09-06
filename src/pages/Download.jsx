@@ -39,11 +39,18 @@ const Download = () => {
   const month = searchParams.get("month")
   const  downloadFunc =(url)=>{
     setDownloadLoading(true)
-   axios.get(`https://download-movie-url-generator.onrender.com/server1/download?url=${url}`).then(res=>{
+    //https://ak.sv/download/162087/9708/darkness-of-man
+    if(url.indexOf(ak.sv) !== -1 ){
+       axios.get(`https://download-movie-url-generator.onrender.com/server1/download?url=${url}`).then(res=>{
      setDownloadLoading(false)
   window.open( 
               res.data, "_blank");
 })
+    }
+  else{
+     window.open(url);
+   setDownloadLoading(false)
+  }
 }
 
   useEffect(()=>{
