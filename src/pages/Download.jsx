@@ -40,7 +40,7 @@ const Download = () => {
   const  downloadFunc =(url)=>{
     setDownloadLoading(true)
     //https://ak.sv/download/162087/9708/darkness-of-man
-    if(url.indexOf(ak.sv) !== -1 ){
+    if(url.indexOf("ak.sv") !== -1 ){
        axios.get(`https://download-movie-url-generator.onrender.com/server1/download?url=${url}`).then(res=>{
      setDownloadLoading(false)
   window.open( 
