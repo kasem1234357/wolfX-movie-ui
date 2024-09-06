@@ -48,7 +48,7 @@ const Download = () => {
 })
     }
   else{
-     window.open(url);
+     window.location=url;
    setDownloadLoading(false)
   }
 }
