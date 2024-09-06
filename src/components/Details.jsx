@@ -20,14 +20,11 @@ function Details({ data3, target, name, showId }) {
   const movies = useSelector((state) => state.movies.data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const year =
-    name === "movie"
-      ? data3?.all.release_date.split("-")[0]
-      : data3?.all.first_air_date.split("-")[0];
-  const month =
-    name === "movie"
-      ? data3?.all.release_date.split("-")[1]
-      : data3?.all.first_air_date.split("-")[1];
+   const date = name === "movie"
+  ? data3?.all.release_date:data3?.all.first_air_date
+  const year =date.split('-')[0]
+   
+  const month = date.split('-')[1]
   const nameDW = data3.all.name || data3.all.title;
   const type = name === "movie" ? "Movie" : "Series";
   useEffect(() => {
@@ -61,7 +58,7 @@ function Details({ data3, target, name, showId }) {
           setActiveWarning={setActiveWarning}
           userId={user?._id}
           type={name}
-          year={+year}
+          date={date}
           showName={data3.all.title ? data3.all.title : data3.all.name}
           showId={showId}
         />
